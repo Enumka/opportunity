@@ -13,7 +13,7 @@ import StartApList from "./components/pages/StartApPage";
 import StartApPosts from "./components/pages/StartApPostsPage";
 import UserProfile from "./components/pages/UserProfilePage";
 import WorkerProfile from "./components/pages/WorkerProfilePage";
-import Workers from "./components/pages/WorkersPage";
+import WorkersPage from "./components/pages/WorkersPage";
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
         <Route path="/startappage" element={<StartApPage/>}/>
         <Route path="/startapposts" element={<StartApPosts/>}/>
         <Route path="/workerprofile" element={<WorkerProfile/>}/>
-        <Route path="/workers" element={<Workers/>}/>
+        <Route path="/workers" element={<WorkersPage/>}/>
         <Route path="/register" element={<Register/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/userprofile" element={<UserProfile/>}/>
