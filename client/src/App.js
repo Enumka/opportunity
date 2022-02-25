@@ -9,7 +9,6 @@ import Login from "./components/pages/LoginPage";
 import  Main  from "./components/pages/MainPage";
 import Register  from "./components/pages/RegisterPage";
 import StartApPage from "./components/pages/StartApPage";
-import StartApList from "./components/pages/StartApPage";
 import StartApPosts from "./components/pages/StartApPostsPage";
 import UserProfile from "./components/pages/UserProfilePage";
 import WorkerProfile from "./components/pages/WorkerProfilePage";
