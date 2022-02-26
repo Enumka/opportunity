@@ -1,0 +1,1 @@
+export const GET_ALL_WORKERS = 'GET_ALL_WORKERS'
