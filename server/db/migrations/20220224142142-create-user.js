@@ -31,6 +31,9 @@ module.exports = {
       body: {
         type: Sequelize.TEXT,
       },
+      status: {
+        type: Sequelize.BOOLEAN,
+      },
       roleId: {
         type: Sequelize.INTEGER,
         references: {

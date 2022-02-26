@@ -5,9 +5,9 @@ function Workers() {
   return (
 
     <div>Workers
-      <WorkersList/>
+      <WorkersList />
     </div>
-    
+
   )
 }
 
