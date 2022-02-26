@@ -1,15 +1,7 @@
 import React from 'react'
 
-
-
-
-function StartApPage() {
+export default function StartApPage() {
   return (
-    <>
     <div>StartApPage</div>
-    
-    </>
   )
 }
-
-export default StartApPage

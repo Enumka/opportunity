@@ -1,4 +1,5 @@
 require('dotenv').config();
+
 const express = require('express');
 const cors = require('cors');
 
@@ -6,8 +7,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
-const morgan = require('morgan');
-// const upload = require('./middlewares/middlewares');
+const cors = require('cors');
+const upload = require('./middlewares/middlewares');
 
 const { PORT } = process.env || 3001;
 
@@ -22,7 +23,6 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-app.use(morgan('dev'));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

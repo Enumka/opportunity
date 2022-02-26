@@ -6,8 +6,8 @@ import Crm from "./components/pages/CrmPage";
 import { Header } from "./components/Header/Header";
 import InfoProject from "./components/pages/InfoProjectPage";
 import Login from "./components/pages/LoginPage";
-import  Main  from "./components/pages/MainPage";
-import Register  from "./components/pages/RegisterPage";
+import Main from "./components/pages/MainPage";
+import Register from "./components/pages/RegisterPage";
 import StartApPage from "./components/pages/StartApPage";
 import StartApList from "./components/pages/StartApPage";
 import StartApPosts from "./components/pages/StartApPostsPage";
@@ -31,7 +31,7 @@ function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/userprofile" element={<UserProfile/>}/>
         <Route path="/" element={<Main/>}/>
-      </Routes>
+        categoryIdcategoryId      </Routes>
     </>
 
   );

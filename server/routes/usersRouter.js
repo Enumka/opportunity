@@ -7,18 +7,19 @@ const { User } = require('../db/models');
 
 router.post('/signup', async (req, res) => {
   console.log(req.body);
-  const { login, email } = req.body;
+  const { login, email, roleId } = req.body;
   const password = sha256(req.body.password);
 
   try {
     if (login && email && req.body.password) {
       const user = await User.create({
-        login, password, email,
+        login, password, email, roleId,
       });
 
       req.session.userId = user.id;
       req.session.userLogin = user.name;
       req.session.userEmail = user.email;
+      req.session.userRoleId = user.roleId;
       req.session.userPassword = user.password;
       res.json({ user });
     } else {
@@ -42,6 +43,7 @@ router.post('/signin', async (req, res) => {
       if (user.password == password) {
         req.session.userId = user.id;
         req.session.userLogin = user.name;
+        req.session.userRoleId = user.roleId;
         req.session.userEmail = user.email;
         res.json({ user });
       } else {
