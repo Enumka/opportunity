@@ -1,9 +1,7 @@
 import React from 'react'
 
-function StartApPosts() {
+export default function StartApPostsPage() {
   return (
-    <div>StartApPosts</div>
+    <div>StartApPostsPage</div>
   )
 }
-
-export default StartApPosts

@@ -12,12 +12,12 @@ router.get('/:page', async (req, res) => {
   }
 
   const size = 3;
-  const workersWithCount = await User.findAndCount({
+  const workersWithCount = await User.findAndCountAll({
     where: { status: true },
     limit: size,
     offset: page * size,
     order: [
-      'id', 'DESC',
+      ['id', 'DESC'],
     ],
   });
 
@@ -29,7 +29,7 @@ router.get('/:page', async (req, res) => {
 });
 
 router.put('/:id', upload.single('file'), async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
 
   const {
     login, email, firstName, lastName, telephone, body,
@@ -43,15 +43,17 @@ router.put('/:id', upload.single('file'), async (req, res) => {
       lastName,
       telephone,
       body,
+      status: true,
       img: `/img/${req.file.originalname}`,
     }, { where: { id: req.params.id } });
+    console.log(worker);
     res.json({ worker });
   } catch (err) {
     res.sendStatus(500);
   }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/lk/:id', async (req, res) => {
   const worker = await User.findOne({ where: { id: req.params.id } });
   res.json({ worker });
 });
