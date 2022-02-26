@@ -4,8 +4,8 @@ import WorkersList from '../WorkersList/WorkersList'
 function Workers() {
   return (
 
-    <div>Workers
-      <WorkersList />
+    <div>
+      <WorkersList/>
     </div>
 
   )

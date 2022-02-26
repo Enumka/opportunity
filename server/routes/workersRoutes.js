@@ -22,7 +22,7 @@ router.get('/:page', async (req, res) => {
   });
 
   res.send({
-    conten: workersWithCount.rows,
+    content: workersWithCount.rows,
     totalPages: Math.ceil(workersWithCount.count / Number.parseInt(size)),
 
   });
