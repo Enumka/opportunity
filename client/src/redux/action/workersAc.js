@@ -6,8 +6,8 @@ export const getAllWorkers = (workers) => ({
   payload: workers
 })
 
-export const getAllWorkersFromServer = () => async (dispatch) => {
-  const response = await axios('/workers')
-  dispatch(getAllWorkers(response.data))
-  console.log(response);
+export const getAllWorkersFromServer = (page) => async (dispatch) => {
+  const response = await axios(`/workers/${page}`)
+  dispatch(getAllWorkers(response.data.content))
+  console.log('-------->',response.data.content);
 }

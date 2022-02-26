@@ -7,12 +7,13 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 function WorkersItem({worker}) {
+  console.log('11',worker);
   return (
     <Card sx={{ maxWidth: 345, marginLeft: '80vh', marginTop: '5vh'}}>
       <CardMedia
         component="img"
         height="240"
-        image={worker.img}
+        image={`http://localhost:3001${worker.img}`}
         alt="green iguana"
       />
       <CardContent>
