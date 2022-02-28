@@ -1,4 +1,4 @@
-import {GET_ALL_WORKERS, CREATE_STARTUP, GET_CATEGORY} from '../types/allTypes'
+import { GET_ALL_WORKERS } from '../types/allTypes'
 import axios from 'axios'
 
 export const getAllWorkers = (workers) => ({

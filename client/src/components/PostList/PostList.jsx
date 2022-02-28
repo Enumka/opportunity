@@ -1,21 +1,16 @@
 import { Grid } from "@mui/material"
+import { useSelector } from "react-redux"
 import PostItem from "../PostItem/PostItem"
 
 function PostList() {
+  const posts = useSelector(state => state.posts)
+  console.log(posts);
+
   return (
     <Grid container >
 
-      <PostItem />
-      <PostItem />
-      <PostItem />
-      <PostItem />
-      <PostItem />
-      <PostItem />
-      <PostItem />
-      <PostItem />
-      <PostItem />
-      <PostItem />
-      <PostItem />
+      {posts.map(post => <PostItem key={post.id} post={post} {...post} />)}
+
 
     </Grid>
   )
