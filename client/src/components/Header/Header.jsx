@@ -98,6 +98,7 @@ export const Header = () => {
           <Link to={`/`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Главная</Button></Link>
           <Link to={`/startappage`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Идеи</Button></Link>
           <Link to={`/workers`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Исполнители</Button></Link>
+          <Link to={`/startapposts`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Добавить Стартап</Button></Link>
 
           </Box>
           <Link to={`/userprofile`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Профиль</Button></Link>

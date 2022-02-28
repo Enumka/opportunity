@@ -1,1 +1,3 @@
 export const GET_ALL_WORKERS = 'GET_ALL_WORKERS'
+export const CREATE_STARTUP = 'CREATE_STARTUP'
+export const GET_CATEGORY = 'GET_CATEGORY'
