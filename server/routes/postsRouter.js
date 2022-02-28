@@ -5,6 +5,13 @@ const router = express.Router();
 const { Post } = require('../db/models');
 const upload = require('../middlewares/middlewares');
 
+const { Category } = require('../db/models');
+
+router.get('/', async (req, res) => {
+  const category = await Category.findAll();
+  res.json({ category });
+});
+
 router.get('/:page', async (req, res) => {
   const pageAsNumber = Number.parseInt(req.params.page);
 
@@ -38,16 +45,17 @@ router.post('/', upload.single('file'), async (req, res) => {
       body: req.body.body,
       categoryId: req.body.categoryId,
       userId: req.session.userId,
-      img: `/img/${req.file.originalname}`,
+      img: `/img/${req?.file?.originalname}`,
     });
     res.json({ post });
   } catch (err) {
+    console.log(err);
     res.sendStatus(500);
   }
 });
 
 router.put('/:id', upload.single('file'), async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
 
   try {
     const post = await Post.update({
