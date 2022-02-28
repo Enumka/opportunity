@@ -13,7 +13,7 @@ function WorkersList() {
     dispatch(getAllWorkersFromServer(0))
   }, [])
 
-    workers.forEach(worker => console.log('12',worker))
+    // workers.forEach(worker => console.log('12',worker))
   return (
     <div>
       {workers.map((worker) => <WorkersItem key={worker.id} worker={worker}/>)}

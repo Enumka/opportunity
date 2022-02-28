@@ -1,20 +1,20 @@
-import {CREATE_STARTUP, GET_CATEGORY} from '../types/allTypes'
+import { CREATE_STARTUP, GET_ALL_POST, GET_CATEGORY } from '../types/allTypes'
 import initState from '../initState'
-import React from 'react'
 
 const startupReducer = (state = initState, action) => {
   switch (action.type) {
+
     case CREATE_STARTUP:
       return [
         action.payload,
         ...state
       ]
-      case GET_CATEGORY:
-        return action.payload
-    
 
-    default: 
-    return state
+    case GET_ALL_POST:
+      return action.payload
+
+    default:
+      return state
   }
 }
 

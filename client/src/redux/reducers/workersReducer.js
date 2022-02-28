@@ -1,6 +1,5 @@
-import {GET_ALL_WORKERS, CREATE_STARTUP} from '../types/allTypes'
+import { GET_ALL_WORKERS } from '../types/allTypes'
 import initState from '../initState'
-import React from 'react'
 
 const workersReducer = (state = initState, action) => {
   switch (action.type) {
@@ -8,8 +7,8 @@ const workersReducer = (state = initState, action) => {
       return action.payload
 
 
-    default: 
-    return state
+    default:
+      return state
   }
 }
 
