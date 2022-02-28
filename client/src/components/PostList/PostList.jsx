@@ -1,7 +1,24 @@
-import React from 'react'
+import { Grid } from "@mui/material"
+import PostItem from "../PostItem/PostItem"
 
-export default function PostList() {
+function PostList() {
   return (
-    <div>PostList</div>
+    <Grid container >
+
+      <PostItem />
+      <PostItem />
+      <PostItem />
+      <PostItem />
+      <PostItem />
+      <PostItem />
+      <PostItem />
+      <PostItem />
+      <PostItem />
+      <PostItem />
+      <PostItem />
+
+    </Grid>
   )
 }
+
+export default PostList
