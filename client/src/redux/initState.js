@@ -1,6 +1,8 @@
 const defaultState = {
   workers: [],
-  worker: {}
+  worker: {},
+  startup: [],
+  category: []
 }
 
 export default defaultState

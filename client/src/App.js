@@ -8,8 +8,9 @@ import InfoProject from "./components/pages/InfoProjectPage";
 import Login from "./components/pages/LoginPage";
 import Main from "./components/pages/MainPage";
 import Register from "./components/pages/RegisterPage";
-import PostPage from "./components/pages/PostPage";
-import StartApPosts from "./components/pages/StartApPostsPage";
+import StartApPage from "./components/pages/StartApPage";
+import StartApList from "./components/pages/StartApPage";
+import StartApPostsPage from "./components/pages/StartApPostsPage";
 import UserProfile from "./components/pages/UserProfilePage";
 import WorkerProfile from "./components/pages/WorkerProfilePage";
 import WorkersPage from "./components/pages/WorkersPage";
@@ -22,15 +23,15 @@ function App() {
         <Route path="/" element={<Main/>}/>
         <Route path="/crm" element={<Crm/>}/>
         <Route path="/infoproject" element={<InfoProject/>}/>
-        <Route path="/startappage" element={<PostPage/>}/>
-        <Route path="/startapposts" element={<StartApPosts/>}/>
+        <Route path="/startappage" element={<StartApPage/>}/>
+        <Route path="/startapposts" element={<StartApPostsPage/>}/>
         <Route path="/workerprofile" element={<WorkerProfile/>}/>
         <Route path="/workers" element={<WorkersPage/>}/>
         <Route path="/register" element={<Register/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/userprofile" element={<UserProfile/>}/>
         <Route path="/" element={<Main/>}/>
-        categoryIdcategoryId      </Routes>
+        </Routes>
     </>
 
   );
