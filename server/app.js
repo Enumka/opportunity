@@ -2,7 +2,6 @@ require('dotenv').config();
 
 const express = require('express');
 const cors = require('cors');
-const morgan = require('morgan');
 
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -16,6 +15,7 @@ const { PORT } = process.env || 3001;
 const usersRouter = require('./routes/usersRouter');
 const postsRouter = require('./routes/postsRouter');
 const workersRoutes = require('./routes/workersRoutes');
+const rolesRouter = require('./routes/rolesRouter');
 
 const app = express();
 
@@ -23,8 +23,10 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-app.use(cors());
-app.use(morgan('dev'));
+app.use(cors({
+  credentials: true,
+  origin: 'http://localhost:3000',
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -46,6 +48,7 @@ app.use(
 app.use('/users', usersRouter);
 app.use('/posts', postsRouter);
 app.use('/workers', workersRoutes);
+app.use('/roles', rolesRouter);
 
 app.listen(PORT, () => {
   console.log(`server podnyat my capitan on port ${PORT}`);
