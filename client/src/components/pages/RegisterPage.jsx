@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -36,26 +36,26 @@ const theme = createTheme();
 
 export default function Register() {
   const navigate = useNavigate()
-const dispatch = useDispatch();
-const roles = useSelector(state => state.roles)
-const [inputs, setInputs] = useState({login:'', email:'', password:'', roleId:3})
+  const dispatch = useDispatch();
+  const roles = useSelector(state => state.roles)
+  const [inputs, setInputs] = useState({ login: '', email: '', password: '', roleId: 3 })
 
 
   const handleSubmit = (e) => {
-  setInputs(prev => ({...prev, [e.target.name]: e.target.value}))
+    setInputs(prev => ({ ...prev, [e.target.name]: e.target.value }))
   };
 
   useEffect(() => {
     dispatch(getRoles())
   }, [])
-  console.log(inputs);
+  // console.log(inputs);
 
-const submitHandler = (e) => {
-   e.preventDefault()
-   dispatch(getUser(inputs))
-   setInputs({login:'', email:'', password:'', roleId:3})
-   navigate('/')
-}
+  const submitHandler = (e) => {
+    e.preventDefault()
+    dispatch(getUser(inputs))
+    setInputs({ login: '', email: '', password: '', roleId: 3 })
+    navigate('/')
+  }
 
 
   return (
@@ -76,7 +76,7 @@ const submitHandler = (e) => {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <Box component="form" onSubmit={submitHandler} noValidate  sx={{ mt: 3 }}>
+          <Box component="form" onSubmit={submitHandler} noValidate sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={12}>
                 <TextField
@@ -100,7 +100,7 @@ const submitHandler = (e) => {
                   name="email"
                   autoComplete="email"
                   onChange={handleSubmit}
-                  
+
                   value={inputs.email}
 
                 />
@@ -120,20 +120,20 @@ const submitHandler = (e) => {
                 />
               </Grid>
               <Grid item xs={12} sm={12}>
-         
-              <FormControl fullWidth>
-  <InputLabel id="demo-simple-select-label">Роль</InputLabel>
-  <Select
-    labelId="demo-simple-select-label"
-    id="demo-simple-select"
-    name="roleId"
-    value={inputs.roleId}
-    onChange={handleSubmit}
-  >
-   {roles.map(el => <MenuItem key={el.id} value={el.id}>{el.name}</MenuItem>)}
-  </Select>
-</FormControl>
-</Grid>
+
+                <FormControl fullWidth>
+                  <InputLabel id="demo-simple-select-label">Роль</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    name="roleId"
+                    value={inputs.roleId}
+                    onChange={handleSubmit}
+                  >
+                    {roles.map(el => <MenuItem key={el.id} value={el.id}>{el.name}</MenuItem>)}
+                  </Select>
+                </FormControl>
+              </Grid>
             </Grid>
             <Button
               type="submit"
