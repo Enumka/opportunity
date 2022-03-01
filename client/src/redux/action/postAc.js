@@ -1,4 +1,4 @@
-import { CREATE_STARTUP, GET_ALL_POST } from '../types/allTypes'
+import { CREATE_STARTUP, GET_ALL_POST, GET_ONE_POST } from '../types/allTypes'
 import axios from 'axios'
 
 export const createStartUp = (startup) => ({
@@ -22,6 +22,18 @@ export const getPosts = (posts) => ({
   payload: posts
 })
 
+
+export const getOnePost = (startup) => ({
+  type: GET_ONE_POST,
+  payload: startup
+})
+
+export const getOnePostFromServer = (id) => async (dispatch) => {
+  const response = await axios(`/posts/detailed/${id}`)
+  dispatch(getOnePost(response.data.post))
+  console.log(response.data.post);
+  }
+  
 export const getPostsFromServer = (num) => async (dispatch) => {
   const res = await axios(`posts/${num}`)
   dispatch(getPosts(res.data.content))

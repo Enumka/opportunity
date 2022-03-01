@@ -1,4 +1,4 @@
-import { GET_ALL_WORKERS } from '../types/allTypes'
+import {GET_ALL_WORKERS, GET_ONE_WORKER} from '../types/allTypes'
 import axios from 'axios'
 
 export const getAllWorkers = (workers) => ({
@@ -12,3 +12,13 @@ export const getAllWorkersFromServer = (page) => async (dispatch) => {
   // console.log('-------->',response.data.content);
 }
 
+export const getOneWorker = (worker) => ({
+  type: GET_ONE_WORKER,
+  payload: worker
+})
+
+export const getOneWorkerFromServer = (id) => async (dispatch) => {
+  const response = await axios(`/workers/lk/${id}`)
+  dispatch(getOneWorker(response.data.worker))
+  // console.log('-------->',response.data.worker);
+}

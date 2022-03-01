@@ -80,7 +80,7 @@ function StartApPostsForm() {
       </div>
       <select onChange={(e) => handleChangeCategory(e)} style={{ width: '40vh', height: '3vh', marginTop: '10vh', marginLeft: '75vh' }}>
         <option defaultValue>Выберите категорию</option>
-        {category.map(el => <option key={el.id} value={el.id}  >{el.name}</option>)}
+        {category.map(el => <option key={el.id} value={el.id}>{el.name}</option>)}
       </select>
       <input type="file" onChange={(e) => handleChangeImage(e)} style={{ width: '40vh', height: '3vh', marginTop: '10vh', marginLeft: '81vh' }}></input>
       <div style={{ width: '40vh', height: '3vh', marginTop: '10vh', marginLeft: '88vh' }}>

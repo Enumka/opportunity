@@ -1,4 +1,4 @@
-import { GET_ALL_WORKERS } from '../types/allTypes'
+import { GET_ALL_WORKERS} from '../types/allTypes'
 import initState from '../initState'
 
 const workersReducer = (state = initState, action) => {
@@ -6,6 +6,7 @@ const workersReducer = (state = initState, action) => {
     case GET_ALL_WORKERS:
       return action.payload
 
+      
 
     default:
       return state
