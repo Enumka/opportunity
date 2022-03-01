@@ -6,17 +6,17 @@ import {getAllWorkersFromServer} from '../../redux/action/workersAc'
 
 function WorkersList() {
   const workers = useSelector(state => state.workers)
-  console.log('workers',workers);
-  const dispatch = useDispatch()
+  // console.log('workers',workers);
+  // const dispatch = useDispatch()
 
-  useEffect(() => {
-    dispatch(getAllWorkersFromServer(0))
-  }, [])
-
-    workers.forEach(worker => console.log('12',worker))
+  // useEffect(() => {
+  //   dispatch(getAllWorkersFromServer(0))
+  // }, [])
+  
+    // workers.forEach(worker => console.log('12',worker))
   return (
     <div>
-      {workers.map((worker) => <WorkersItem key={worker.id} worker={worker}/>)}
+      {workers?.map((worker) => <WorkersItem key={worker.id} worker={worker}/>)}
       
     </div>
   )

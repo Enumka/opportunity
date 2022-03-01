@@ -12,8 +12,8 @@ import StartApPage from "./components/pages/StartApPage";
 import StartApList from "./components/pages/StartApPage";
 import StartApPostsPage from "./components/pages/StartApPostsPage";
 import UserProfile from "./components/pages/UserProfilePage";
-import WorkerProfile from "./components/pages/WorkerProfilePage";
 import WorkersPage from "./components/pages/WorkersPage";
+import WorkerProfilePage from "./components/pages/WorkerProfilePage";
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
         <Route path="/infoproject" element={<InfoProject/>}/>
         <Route path="/startappage" element={<StartApPage/>}/>
         <Route path="/startapposts" element={<StartApPostsPage/>}/>
-        <Route path="/workerprofile" element={<WorkerProfile/>}/>
+        <Route path="/workerprofile/:id" element={<WorkerProfilePage/>}/>
         <Route path="/workers" element={<WorkersPage/>}/>
         <Route path="/register" element={<Register/>}/>
         <Route path="/login" element={<Login/>}/>

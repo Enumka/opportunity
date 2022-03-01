@@ -1,12 +1,15 @@
 import { combineReducers } from "redux";
 import workersReducer from "./workersReducer";
 import startupReducer from "./startupReducer";
+import oneStartupReducer from "./oneStartupReducer";
 
 
 const rootReducer = combineReducers({
   workers: workersReducer,
-  startup: startupReducer,
+  worker: workersReducer,
+  startups: startupReducer,
   category: startupReducer,
+  startup: oneStartupReducer
 
   })
 

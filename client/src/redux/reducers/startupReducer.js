@@ -1,4 +1,4 @@
-import {CREATE_STARTUP, GET_CATEGORY} from '../types/allTypes'
+import {CREATE_STARTUP, GET_CATEGORY, GET_ONE_POST} from '../types/allTypes'
 import initState from '../initState'
 import React from 'react'
 
@@ -11,8 +11,7 @@ const startupReducer = (state = initState, action) => {
       ]
       case GET_CATEGORY:
         return action.payload
-    
-
+        
     default: 
     return state
   }

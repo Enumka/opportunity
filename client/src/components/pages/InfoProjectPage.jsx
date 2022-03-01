@@ -1,9 +1,15 @@
 import React from 'react'
 
-function InfoProject() {
+import InfoProjectCard from '../InfoProjectCard/InfoProjectCard'
+
+
+function InfoProjectPage() {
   return (
-    <div>InfoProject</div>
+    <div>
+      <InfoProjectCard/>
+      </div>
+    
   )
 }
 
-export default InfoProject
+export default InfoProjectPage

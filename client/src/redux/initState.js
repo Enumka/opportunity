@@ -1,8 +1,9 @@
-const defaultState = {
+const initState = {
   workers: [],
   worker: {},
-  startup: [],
+  startups: [],
+  startup: {},
   category: []
 }
 
-export default defaultState
+export default initState
