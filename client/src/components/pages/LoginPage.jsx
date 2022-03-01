@@ -13,7 +13,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useDispatch } from 'react-redux';
-import { signIn } from '../../redux/actions/userAC';
+import { signIn } from '../../redux/action/userAC';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 

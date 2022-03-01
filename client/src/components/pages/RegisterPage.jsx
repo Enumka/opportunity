@@ -12,8 +12,8 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux'
-import { getRoles } from '../../redux/actions/rolesAC';
-import { getUser } from '../../redux/actions/userAC';
+import { getRoles } from '../../redux/action/rolesAC';
+import { getUser } from '../../redux/action/userAC';
 import { useNavigate } from 'react-router-dom'
 
 

@@ -10,7 +10,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import { Link } from "react-router-dom"
 import { useDispatch } from 'react-redux';
-import { logout } from '../../redux/actions/userAC';
+import { logout } from '../../redux/action/userAC';
 
 
 export const Header = () => {
@@ -82,6 +82,8 @@ export const Header = () => {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
           <Link to={`/`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Главная</Button></Link>
           <Link to={`/startappage`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Идеи</Button></Link>
+          <Link to={`/workers`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Исполнители</Button></Link>
+          <Link to={`/startapposts`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Добавить Стартап</Button></Link>
 
           </Box>
           <Link to={`/userprofile`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Профиль</Button></Link>
