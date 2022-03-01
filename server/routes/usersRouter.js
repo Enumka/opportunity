@@ -5,17 +5,24 @@ const router = express.Router();
 
 const { User } = require('../db/models');
 
+router.post('/check', (req, res) => {
+  if (req.session.user) {
+    return res.json({ user: req.session.user });
+  }
+  res.sendStatus(401);
+});
+
 router.post('/signup', async (req, res) => {
   console.log(req.body);
   const { login, email, roleId } = req.body;
   const password = sha256(req.body.password);
-
+  
   try {
     if (login && email && req.body.password) {
       const user = await User.create({
         login, password, email, roleId,
       });
-
+      
       req.session.userId = user.id;
       req.session.userLogin = user.name;
       req.session.userEmail = user.email;
@@ -33,10 +40,10 @@ router.post('/signup', async (req, res) => {
 
 router.post('/signin', async (req, res) => {
   console.log(req.body);
-
+  
   const { email } = req.body;
   const password = sha256(req.body.password);
-
+  
   try {
     const user = await User.findOne({ where: { email } });
     if (user) {
@@ -57,5 +64,11 @@ router.post('/signin', async (req, res) => {
     res.sendStatus(500);
   }
 });
+
+router.get('/logout', (req, res) => {
+  req.session.destroy();
+  res.clearCookie('login').sendStatus(200);
+});
+
 
 module.exports = router;

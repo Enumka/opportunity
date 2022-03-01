@@ -8,10 +8,10 @@ import {getAllWorkersFromServer} from '../../redux/action/workersAc'
 
 function Workers() {
 
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(getAllWorkersFromServer(0))
-  }, [])
+  // const dispatch = useDispatch()
+  // useEffect(() => {
+  //   dispatch(getAllWorkersFromServer(0))
+  // }, [])
   return (
 
     <div>
