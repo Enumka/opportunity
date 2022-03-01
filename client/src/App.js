@@ -11,20 +11,20 @@ import Register from "./components/pages/RegisterPage";
 import StartApPage from "./components/pages/StartApPage";
 import StartApPosts from "./components/pages/StartApPostsPage";
 import UserProfile from "./components/pages/UserProfilePage";
-import WorkerProfile from "./components/pages/WorkerProfilePage";
 import Workers from "./components/pages/WorkersPage";
+import WorkerProfilePage from "./components/pages/WorkerProfilePage";
+import { ProtectedAuth } from "./components/ProtectedAuth/ProtectedAuth";
 
 function App() {
   return (
     <>
       <Header />
       <Routes>
-        <Route path="/" element={<Main />} />
         <Route path="/crm" element={<Crm />} />
         <Route path="/infoproject" element={<InfoProject />} />
         <Route path="/startappage" element={<StartApPage />} />
         <Route path="/startapposts" element={<StartApPosts />} />
-        <Route path="/workerprofile" element={<WorkerProfile />} />
+        <Route path="/workerprofilepage" element={<WorkerProfilePage />} />
         <Route path="/workers" element={<Workers />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />

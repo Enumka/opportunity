@@ -7,34 +7,24 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-// import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-// import Tooltip from '@mui/material/Tooltip';
-// import MenuItem from '@mui/material/MenuItem';
 import { Link } from "react-router-dom"
+import { useDispatch } from 'react-redux';
+import { logout } from '../../redux/actions/userAC';
 
-
-// const pages = ['Главная', 'Pricing', 'Blog', ];
-// const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 export const Header = () => {
+  const dispatch = useDispatch()
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  // const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  // const handleOpenUserMenu = (event) => {
-  //   setAnchorElUser(event.currentTarget);
-  // };
+
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-
-  // const handleCloseUserMenu = () => {
-  //   setAnchorElUser(null);
-  // };
 
   return (
     <AppBar position="static">
@@ -79,11 +69,6 @@ export const Header = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {/* {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))} */}
             </Menu>
           </Box>
           <Typography
@@ -100,44 +85,10 @@ export const Header = () => {
 
           </Box>
           <Link to={`/userprofile`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Профиль</Button></Link>
+          
           <Link to={`/register`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Регистрация</Button></Link>
           <Link to={`/login`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Войти</Button></Link>
-          <Link to={`/`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Выйти</Button></Link>
-
-          {/* <Link to={`/main`}><Button>Primary</Button></Link> */}
-          {/* <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-            
-          </Box>
-        */}
-
-
+          <Link to={`/`}><Button onClick={dispatch(logout())} sx={{ my: 2, color: 'white', display: 'block' }}>Выйти</Button></Link>
         </Toolbar>
       </Container>
     </AppBar>

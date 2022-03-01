@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,6 +12,10 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useDispatch } from 'react-redux';
+import { signIn } from '../../redux/actions/userAC';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 function Copyright(props) {
   return (
@@ -29,15 +33,18 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function Login() {
-  const handleSubmit = (event) => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const [input, setInput] = useState({email:'', password:''})
+
+  const submitHandler = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    dispatch(signIn(input, navigate))
   };
+
+  const handleSubmit = (e) => {
+  setInput(prev => ({...prev, [e.target.name]: e.target.value}) )
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -57,7 +64,7 @@ export default function Login() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box component="form" onSubmit={submitHandler} noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
@@ -67,6 +74,8 @@ export default function Login() {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={handleSubmit}
+              value={input.email}
             />
             <TextField
               margin="normal"
@@ -77,6 +86,8 @@ export default function Login() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={handleSubmit}
+              value={input.password}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}

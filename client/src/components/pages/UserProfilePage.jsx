@@ -48,16 +48,7 @@ export default function UserProfile() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      {/* <AppBar position="relative">
-        <Toolbar>
-          <CameraIcon sx={{ mr: 2 }} />
-          <Typography variant="h6" color="inherit" noWrap>
-            Album layout
-          </Typography>
-        </Toolbar>
-      </AppBar> */}
       <main>
-        {/* Hero unit */}
         <Box
           sx={{
             bgcolor: 'background.paper',
@@ -91,9 +82,7 @@ export default function UserProfile() {
             </Stack>
           </Container>
         </Box>
-        <Container sx={{ py: 8 }} maxWidth="md">
-          {/* End hero unit */}
-          <Grid container spacing={4}>
+        <Container sx={{ py: 8 }} maxWidth="md">          <Grid container spacing={4}>
             {cards.map((card) => (
               <Grid item key={card} xs={12} sm={6} md={4}>
                 <Card
@@ -102,7 +91,6 @@ export default function UserProfile() {
                   <CardMedia
                     component="img"
                     sx={{
-                      // 16:9
                       pt: '56.25%',
                     }}
                     image="https://source.unsplash.com/random"
@@ -127,22 +115,6 @@ export default function UserProfile() {
           </Grid>
         </Container>
       </main>
-      {/* Footer */}
-      {/* <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="text.secondary"
-          component="p"
-        >
-          Something here to give the footer a purpose!
-        </Typography>
-        <Copyright />
-      </Box> */}
-      {/* End footer */}
     </ThemeProvider>
   );
 }
