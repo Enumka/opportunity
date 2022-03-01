@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -36,8 +36,8 @@ export const Header = () => {
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
-      {/* <Link to={`/main`}><Button>Primary</Button></Link> */}
-      
+            {/* <Link to={`/main`}><Button>Primary</Button></Link> */}
+
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -80,17 +80,17 @@ export const Header = () => {
             OPPORTYNITY
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-          <Link to={`/`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Главная</Button></Link>
-          <Link to={`/startappage`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Идеи</Button></Link>
-          <Link to={`/workers`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Исполнители</Button></Link>
-          <Link to={`/startapposts`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Добавить Стартап</Button></Link>
+            <Link to={`/`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Главная</Button></Link>
+            <Link to={`/startappage`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Идеи</Button></Link>
+            <Link to={`/workers`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Исполнители</Button></Link>
+            <Link to={`/startapposts`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Добавить Стартап</Button></Link>
 
           </Box>
           <Link to={`/userprofile`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Профиль</Button></Link>
-          
+
           <Link to={`/register`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Регистрация</Button></Link>
           <Link to={`/login`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Войти</Button></Link>
-          <Link to={`/`}><Button onClick={dispatch(logout())} sx={{ my: 2, color: 'white', display: 'block' }}>Выйти</Button></Link>
+          <Link to={`/`}><Button onClick={ () => dispatch(logout())} sx={{ my: 2, color: 'white', display: 'block' }}>Выйти</Button></Link>
         </Toolbar>
       </Container>
     </AppBar>
