@@ -1,9 +1,9 @@
 const initState = {
+  category: [],
   workers: [],
   worker: {},
-  startups: [],
-  startup: {},
-  category: []
+  posts: [],
+  post: {},
 }
 
 export default initState

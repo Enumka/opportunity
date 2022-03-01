@@ -7,12 +7,12 @@ import {getAllWorkersFromServer} from '../../redux/action/workersAc'
 function WorkersList() {
   const workers = useSelector(state => state.workers)
   // console.log('workers',workers);
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
-  // useEffect(() => {
-  //   dispatch(getAllWorkersFromServer(0))
-  // }, [])
-  
+  useEffect(() => {
+    dispatch(getAllWorkersFromServer(0))
+  }, [])
+
     // workers.forEach(worker => console.log('12',worker))
   return (
     <div>

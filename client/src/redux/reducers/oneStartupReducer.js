@@ -2,7 +2,7 @@ import { GET_ONE_POST} from '../types/allTypes'
 import initState from '../initState'
 import React from 'react'
 
-const oneStartupReducer = (state = {}, action) => {
+const oneStartupReducer = (state = initState, action) => {
   switch (action.type) {
     
         case GET_ONE_POST:

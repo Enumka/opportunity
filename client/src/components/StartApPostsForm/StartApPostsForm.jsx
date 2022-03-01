@@ -1,7 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { createStartupToServer, getCategoryFromServer, } from '../../redux/action/postAc'
+import { getCategoryFromServer } from '../../redux/action/categoryAc'
+import { createStartupToServer, } from '../../redux/action/postAc'
 
 function StartApPostsForm() {
 
@@ -9,8 +10,8 @@ function StartApPostsForm() {
   const [body, setBody] = useState('')
   const [categoryId, setCategory] = useState('')
   const [image, setImage] = useState('')
-  const dispatch = useDispatch()
   const category = useSelector(state => state.category)
+  const dispatch = useDispatch()
   // console.log(category)
 
 
@@ -34,7 +35,7 @@ function StartApPostsForm() {
   const handleChangeImage = (e) => {
     setImage(e.target.files[0])
   }
-// console.log(image);
+  // console.log(image);
 
   const handleSubmit = (e) => {
     e.preventDefault()
