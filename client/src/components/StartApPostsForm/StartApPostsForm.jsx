@@ -12,7 +12,6 @@ function StartApPostsForm() {
   const [image, setImage] = useState('')
   const category = useSelector(state => state.category)
   const dispatch = useDispatch()
-  // console.log(category)
 
 
   useEffect(() => {
@@ -26,7 +25,6 @@ function StartApPostsForm() {
   const handleChangeDescription = (e) => {
     setBody(e.target.value)
   }
-  // console.log(categoryId);
   const handleChangeCategory = (e) => {
     setCategory(e.target.value)
 
@@ -35,7 +33,6 @@ function StartApPostsForm() {
   const handleChangeImage = (e) => {
     setImage(e.target.files[0])
   }
-  // console.log(image);
 
   const handleSubmit = (e) => {
     e.preventDefault()

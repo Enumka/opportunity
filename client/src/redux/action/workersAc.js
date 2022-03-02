@@ -9,7 +9,6 @@ export const getAllWorkers = (workers) => ({
 export const getAllWorkersFromServer = (page) => async (dispatch) => {
   const response = await axios(`/workers/${page}`)
   dispatch(getAllWorkers(response.data.content))
-  console.log('-------->',response.data.content);
 }
 
 export const getOneWorker = (worker) => ({
@@ -20,5 +19,4 @@ export const getOneWorker = (worker) => ({
 export const getOneWorkerFromServer = (id) => async (dispatch) => {
   const response = await axios(`/workers/lk/${id}`)
   dispatch(getOneWorker(response.data.worker))
-  // console.log('-------->',response.data.worker);
 }
