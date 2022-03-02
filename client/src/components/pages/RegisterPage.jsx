@@ -48,7 +48,6 @@ export default function Register() {
   useEffect(() => {
     dispatch(getRoles())
   }, [])
-  // console.log(inputs);
 
   const submitHandler = (e) => {
     e.preventDefault()

@@ -6,8 +6,8 @@ import startupReducer from "./startupReducer";
 import oneStartupReducer from "./oneStartupReducer";
 import categoryReducer from "./categoryReducer";
 import oneWorkerReducer from "./oneWorkerReducer";
-
-
+import pagesReducer from "./pagesReducer";
+import currentPageReducer from "./currentPageReducer";
 const rootReducer = combineReducers({
   category: categoryReducer,
   worker: oneWorkerReducer,
@@ -15,7 +15,9 @@ const rootReducer = combineReducers({
   post: oneStartupReducer,
   posts: startupReducer,
   user: userReducer,
-  roles: roleReducer
+  roles: roleReducer,
+  page: pagesReducer,
+  currentPage: currentPageReducer
 })
 
 export default rootReducer

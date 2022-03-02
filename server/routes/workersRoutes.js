@@ -29,8 +29,6 @@ router.get('/:page', async (req, res) => {
 });
 
 router.put('/:id', upload.single('file'), async (req, res) => {
-  // console.log(req.body);
-
   const {
     login, email, firstName, lastName, telephone, body,
   } = req.body;
@@ -46,7 +44,6 @@ router.put('/:id', upload.single('file'), async (req, res) => {
       status: true,
       img: `/img/${req.file.originalname}`,
     }, { where: { id: req.params.id } });
-    console.log(worker);
     res.json({ worker });
   } catch (err) {
     res.sendStatus(500);

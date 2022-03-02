@@ -9,5 +9,4 @@ export const getCategory = (category) => ({
 export const getCategoryFromServer = () => async (dispatch) => {
   const res = await axios(`/posts`)
   dispatch(getCategory(res.data.category))
-  console.log('-------->',res.data.category)
 }

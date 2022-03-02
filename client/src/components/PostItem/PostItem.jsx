@@ -7,6 +7,7 @@ import { Button, CardActionArea, CardActions, Grid } from '@mui/material';
 
 function PostItem({ id, title, body, img }) {
 
+
   return (
     <Grid item xs={12} md={4}>
 

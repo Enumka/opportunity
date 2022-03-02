@@ -16,20 +16,17 @@ function WorkerProfilePage() {
 
 
   const worker = useSelector(state => state.worker)
-  // console.log(worker);
   const dispatch = useDispatch()
   const params = useParams()
-  console.log(params)
-  console.log(worker);
+
 
   useEffect(() => {
-    // console.log("effect get");
     dispatch(getOneWorkerFromServer(params.id))
   }, [])
-  
+
 
   return (
-    <Card sx={{ maxWidth: 445,  marginLeft: 'auto', marginRight: 'auto', marginTop: '15vh'}}>
+    <Card sx={{ maxWidth: 445, marginLeft: 'auto', marginRight: 'auto', marginTop: '15vh' }}>
       <CardMedia
         component="img"
         height="340"
@@ -52,7 +49,7 @@ function WorkerProfilePage() {
         <Button size="small">Связаться</Button>
       </CardActions>
     </Card>
-    
+
   )
 }
 
