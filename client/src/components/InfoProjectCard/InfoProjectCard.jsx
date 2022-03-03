@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { getOnePostFromServer } from '../../redux/action/postAc'
 
+
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -40,35 +41,36 @@ function InfoProjectCard() {
 
 
 
-  const startup = useSelector(state => state.startup)
+  const post = useSelector(state => state.post)
+  
   const dispatch = useDispatch()
   const params = useParams()
   useEffect(() => {
     dispatch(getOnePostFromServer(params.id))
   }, [])
-
+  
   return (
-    <Card sx={{ maxWidth: 445, maxHeight: 645, marginLeft: 'auto', marginRight: 'auto', marginTop: '10vh' }}>
+    <Card sx={{ maxWidth: 445, maxHeight: 845, marginLeft: 'auto', marginRight: 'auto', marginTop: '10vh' }}>
       <CardHeader
         // action={
         //   <IconButton aria-label="settings">
         //     <MoreVertIcon />
         //   </IconButton>
         // }
-        style={{ marginLeft: '19vh', marginRight: 'auto' }}
-        title={startup.title}
-        subheader={startup.createdAt}
-      />
+        style={{ marginLeft: '11vh', marginRight: 'auto' }}
+        title={post.title}
+        // subheader={`Дата Создания: ${post.createdAt.slice(0,10)}`}
+        />
       <CardMedia
         component="img"
         height="294"
-        image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt84J4Um8xIh1GYpbufQM3L3gFLv6bmM9Tvg&usqp=CAU"
+        image={`http://localhost:3001${post.img}`}
         alt="Paella dish"
       />
       <CardContent>
         <Typography
           variant="body2" color="text.secondary">
-          {startup.categoryId}
+          {post.categoryId}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -92,7 +94,7 @@ function InfoProjectCard() {
         <CardContent>
           <Typography paragraph>Description:</Typography>
           <Typography paragraph>
-            {startup.body}
+            {post.body}
           </Typography>
         </CardContent>
       </Collapse>

@@ -14,8 +14,8 @@ function WorkersList() {
 
   return (
     <div>
-      {workers?.map((worker) => <WorkersItem key={worker.id} worker={worker}/>)}
-      
+      {workers?.filter(el => el.status === true).map((worker) => <WorkersItem key={worker.id} worker={worker}/>)}
+      // added filter, if it doesnt work, remove method filter and just leave map
     </div>
   )
 }

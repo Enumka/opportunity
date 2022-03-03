@@ -21,9 +21,10 @@ function App() {
       <Header />
       <Routes>
         <Route path="/crm" element={<Crm />} />
+        <Route path="/infoproject/:id" element={<InfoProject />} />
+        <Route path="/startappage" element={<PostPage />} />
         <Route path="/infoproject" element={<InfoProject />} />
         <Route path="/startappage/:page" element={<PostPage />} />
-        <Route path="/startappage/" element={<PostPage />} />
         <Route path="/startapposts" element={<StartApPostsPage />} />
         <Route path="/workerprofile/:id" element={<WorkerProfilePage />} />
         <Route path="/workers" element={<WorkersPage />} />

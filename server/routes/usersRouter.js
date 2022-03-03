@@ -19,7 +19,7 @@ router.post('/signup', async (req, res) => {
   try {
     if (login && email && req.body.password) {
       const user = await User.create({
-        login, password, email, roleId,
+        login, password, email, roleId,status:false,
       });
 
       req.session.userId = user.id;

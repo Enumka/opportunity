@@ -17,6 +17,7 @@ function PostList({ page }) {
     <>
       <Grid container spacing={2}  >
 
+      {/* {posts.filter(el => el.status === true).map(post => <PostItem key={post.id} post={post} {...post} />)} */}
         {posts.map(post => <PostItem key={post.id} post={post} {...post} />)}
 
 
