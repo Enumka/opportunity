@@ -63,17 +63,6 @@ export const getPosts = (posts) => ({
 //   dispatch(getPosts(res.data.content))
 // }
 
-export const getOnePost = (startup) => ({
-  type: GET_ONE_POST,
-  payload: startup
-})
-
-export const getOnePostFromServer = (id) => async (dispatch) => {
-  const response = await axios(`/posts/detailed/${id}`)
-  dispatch(getOnePost(response.data.post))
-  }
-
-
 export const getAllPosts = (posts) => ({
   type: GET_POSTS,
   payload: posts

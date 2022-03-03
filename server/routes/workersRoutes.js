@@ -11,7 +11,7 @@ router.get('/:page', async (req, res) => {
     page = pageAsNumber;
   }
 
-  const size = 3;
+  const size = 6;
   const workersWithCount = await User.findAndCountAll({
     where: { status: true },
     limit: size,
@@ -42,14 +42,14 @@ router.put('/:id', upload.single('file'), async (req, res) => {
 
   try {
     const worker = await User.update({
-      // login,
-      // email,
-      // firstName,
-      // lastName,
-      // telephone,
-      // body,
-      status: true,
-      // img: `/img/${req.file.originalname}`,
+      login,
+      email,
+      firstName,
+      lastName,
+      telephone,
+      body,
+      status:req.body.status,
+      img: `/img/${req.file.originalname}`,
     }, { where: { id: req.params.id } });
     res.json({ worker });
   } catch (err) {

@@ -23,7 +23,7 @@ router.get('/:page', async (req, res) => {
     page = pageAsNumber;
   }
 
-  const size = 3;
+  const size = 6;
   const postsWidhCount = await Post.findAndCountAll({
     limit: size,
     offset: page * size,
@@ -66,12 +66,12 @@ router.put('/:id', upload.single('file'), async (req, res) => {
 
   try {
     const post = await Post.update({
-      status: true,
-      // title: req.body.title,
-      // body: req.body.body,
-      // categoryId: req.body.categoryId,
-      // userId: req.session.userId,
-      // img: `img/${req?.file?.originalname}`,
+      status: false,
+      title: req.body.title,
+      body: req.body.body,
+      categoryId: req.body.categoryId,
+      userId: req.session.userId,
+      img: `img/${req?.file?.originalname}`,
     }, { where: { id: req.params.id } });
     res.json({ post });
   } catch (err) {
