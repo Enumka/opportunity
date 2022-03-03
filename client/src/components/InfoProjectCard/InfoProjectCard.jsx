@@ -45,12 +45,9 @@ function InfoProjectCard() {
   
   const dispatch = useDispatch()
   const params = useParams()
-  // console.log(params);
   useEffect(() => {
     dispatch(getOnePostFromServer(params.id))
-    // console.log(params.id);
   }, [])
-  // console.log(`Дата Создания: ${post.createdAt.slice(0,10).split().reverse()}`);
   
   return (
     <Card sx={{ maxWidth: 445, maxHeight: 845, marginLeft: 'auto', marginRight: 'auto', marginTop: '10vh' }}>
@@ -78,9 +75,9 @@ function InfoProjectCard() {
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
-        <FavoriteIcon />
-        Связаться c создателем идеи
-      </IconButton>
+          <FavoriteIcon />
+          Связаться c создателем идеи
+        </IconButton>
         {/* <IconButton aria-label="share">
         <ShareIcon />
       </IconButton> */}

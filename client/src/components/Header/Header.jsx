@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -7,35 +7,50 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-// import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-// import Tooltip from '@mui/material/Tooltip';
-// import MenuItem from '@mui/material/MenuItem';
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { useDispatch } from 'react-redux';
+import { logout } from '../../redux/action/userAC';
 
-
-// const pages = ['Главная', 'Pricing', 'Blog', ];
-// const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 export const Header = () => {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  // const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  // const handleOpenUserMenu = (event) => {
-  //   setAnchorElUser(event.currentTarget);
-  // };
+
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  // const handleCloseUserMenu = () => {
-  //   setAnchorElUser(null);
-  // };
+  const clickNav = (e) => {
+    if(e.target.innerText === 'ГЛАВНАЯ') {
+      navigate('/')
+    } else if (e.target.innerText === 'ИДЕИ') {
+      navigate('/startappage')
+    }else if (e.target.innerText === 'ИСПОЛНИТЕЛИ') {
+      navigate('/workers')
+      
+    }if (e.target.innerText === 'ДОБАВИТЬ СТАРТАП') {
+      navigate('/startapposts')
+      
+    }else if (e.target.innerText === 'ПРОФИЛЬ') {
+      navigate('/userprofile')
+    }else if (e.target.innerText === 'РЕГИСТРАЦИЯ') {
+      navigate('/register')
+    }else if (e.target.innerText === 'ВОЙТИ') {
+      navigate('/login')
+    }
+  }
 
+  const clickOut = () => {
+    dispatch(logout())
+    navigate('/login')
+  }
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -46,8 +61,8 @@ export const Header = () => {
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
-      {/* <Link to={`/main`}><Button>Primary</Button></Link> */}
-      
+            {/* <Link to={`/main`}><Button>Primary</Button></Link> */}
+
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -79,11 +94,6 @@ export const Header = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {/* {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))} */}
             </Menu>
           </Box>
           <Typography
@@ -92,54 +102,20 @@ export const Header = () => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
           >
-            LOGO
+            OPPORTYNITY
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-          <Link to={`/`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Главная</Button></Link>
-          <Link to={`/startappage`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Идеи</Button></Link>
-          <Link to={`/workers`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Исполнители</Button></Link>
-          <Link to={`/startapposts`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Добавить Стартап</Button></Link>
+          <Button onClick={ clickNav} sx={{ my: 2, color: 'white', display: 'block' }}>Главная</Button>
+          <Button onClick={ clickNav} sx={{ my: 2, color: 'white', display: 'block' }}>Идеи</Button>
+          <Button onClick={ clickNav} sx={{ my: 2, color: 'white', display: 'block' }}>Исполнители</Button>
+          <Button onClick={ clickNav} sx={{ my: 2, color: 'white', display: 'block' }}>Добавить Стартап</Button>
 
           </Box>
-          <Link to={`/userprofile`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Профиль</Button></Link>
-          <Link to={`/register`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Регистрация</Button></Link>
-          <Link to={`/login`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Войти</Button></Link>
-          <Link to={`/`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Выйти</Button></Link>
-
-          {/* <Link to={`/main`}><Button>Primary</Button></Link> */}
-          {/* <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-            
-          </Box>
-        */}
-
-
+          <Button onClick={ clickNav} sx={{ my: 2, color: 'white', display: 'block' }}>Профиль</Button>
+          
+          <Button onClick={ clickNav} sx={{ my: 2, color: 'white', display: 'block' }}>Регистрация</Button>
+          <Button onClick={ clickNav} sx={{ my: 2, color: 'white', display: 'block' }}>Войти</Button>
+          <Button  onClick={clickOut} sx={{ my: 2, color: 'white', display: 'block' }}>Выйти</Button>
         </Toolbar>
       </Container>
     </AppBar>

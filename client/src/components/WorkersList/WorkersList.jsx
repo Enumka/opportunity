@@ -6,7 +6,12 @@ import {getAllWorkersFromServer} from '../../redux/action/workersAc'
 
 function WorkersList() {
   const workers = useSelector(state => state.workers)
-  
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getAllWorkersFromServer(0))
+  }, [])
+
   return (
     <div>
       {workers?.filter(el => el.status === true).map((worker) => <WorkersItem key={worker.id} worker={worker}/>)}

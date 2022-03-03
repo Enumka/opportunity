@@ -1,10 +1,14 @@
 import { combineReducers } from "redux";
+import { roleReducer } from "./roleReducer";
+import { userReducer } from "./userReducer";
+import { skillReducer } from "./skillReducer";
 import workersReducer from "./workersReducer";
 import startupReducer from "./startupReducer";
 import oneStartupReducer from "./oneStartupReducer";
 import categoryReducer from "./categoryReducer";
 import oneWorkerReducer from "./oneWorkerReducer";
-
+import pagesReducer from "./pagesReducer";
+import currentPageReducer from "./currentPageReducer";
 
 const rootReducer = combineReducers({
   category: categoryReducer,
@@ -12,7 +16,11 @@ const rootReducer = combineReducers({
   workers: workersReducer,
   post: oneStartupReducer,
   posts: startupReducer,
-  // startup: startupReducer,
+  user: userReducer,
+  roles: roleReducer,
+  skill: skillReducer,
+  page: pagesReducer,
+  currentPage: currentPageReducer,
 })
 
 export default rootReducer

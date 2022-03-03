@@ -1,5 +1,6 @@
 import { GET_ALL_WORKERS, CHANGE_USERSTATUS, DELETE_ONE_WORKER} from '../types/allTypes'
 import initState from '../initState'
+import { PUT_USER_PROFILE } from '../types/userTypes'
 
 const workersReducer = (state = initState, action) => {
   switch (action.type) {
@@ -18,6 +19,9 @@ const workersReducer = (state = initState, action) => {
         })
         case DELETE_ONE_WORKER:
           return state.filter((el) => el.id !== action.payload)
+      case PUT_USER_PROFILE:
+      return 
+      
 
     default:
       return state

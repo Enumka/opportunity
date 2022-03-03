@@ -34,7 +34,7 @@ router.get('/', async (req, res) => {
 });
 
 router.put('/:id', upload.single('file'), async (req, res) => {
-  // console.log(req.body);
+  console.log('ppppppppppppppppppppppp', req.body);
 
   const {
     login, email, firstName, lastName, telephone, body,
@@ -51,7 +51,6 @@ router.put('/:id', upload.single('file'), async (req, res) => {
       status: true,
       // img: `/img/${req.file.originalname}`,
     }, { where: { id: req.params.id } });
-    console.log(worker);
     res.json({ worker });
   } catch (err) {
    console.error(err)

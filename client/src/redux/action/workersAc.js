@@ -1,5 +1,6 @@
 import {GET_ALL_WORKERS, GET_ONE_WORKER, CHANGE_USERSTATUS, DELETE_ONE_WORKER} from '../types/allTypes'
 import axios from 'axios'
+import { PUT_USER_PROFILE } from '../types/userTypes'
 
 export const getAllWorkers = (workers) => ({
   type: GET_ALL_WORKERS,
@@ -9,7 +10,6 @@ export const getAllWorkers = (workers) => ({
 export const getAllWorkersFromServer = (page) => async (dispatch) => {
   const response = await axios(`/workers/${page}`)
   dispatch(getAllWorkers(response.data.content))
-  // console.log('-------->',response.data.content);
 }
 
 export const getAllWorkersFromServerwithoutPages = () => async (dispatch) => {
@@ -25,9 +25,9 @@ export const getOneWorker = (worker) => ({
 })
 
 export const getOneWorkerFromServer = (id) => async (dispatch) => {
+  console.log(id);
   const response = await axios(`/workers/lk/${id}`)
   dispatch(getOneWorker(response.data.worker))
-  console.log('-------->',response.data.worker);
 }
 
 
@@ -50,4 +50,24 @@ export const deleteWorker = (id) => ({
 export const deleteOneWorkerFromServer = (id) => async (dispatch) => {
   await axios.delete(`/workers/${id}`)
   dispatch(deleteWorker(id))
+}
+
+export const putWorkerProfile = (worker) => ({
+  type: PUT_USER_PROFILE,
+  payload: worker
+})
+
+
+
+
+export const putWorkerFromThunk = (value, id) => async (dispatch) => {
+ console.log(id, value);
+ 
+  const response = await axios.put(`/workers/${id}`, value, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    }
+  })
+  dispatch(putWorkerProfile(response.data.worker))
+  console.log('-------->',response.data.worker);
 }

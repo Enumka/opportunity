@@ -22,14 +22,12 @@ function WorkersItem({worker}) {
           {worker.firstName} {worker.lastName}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {/* {worker.lastName} */}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           {worker.body}
         </Typography>
       </CardContent>
       <CardActions>
-        {/* <Button size="small">Share</Button> */}
         <Link to={`/workerprofile/${worker.id}`}><Button size="small">Learn More</Button></Link>
       </CardActions>
     </Card>

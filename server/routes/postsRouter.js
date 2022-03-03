@@ -15,6 +15,7 @@ router.get('/', async (req, res) => {
 
 
 router.get('/:page', async (req, res) => {
+  console.log('req', req.params);
   const pageAsNumber = Number.parseInt(req.params.page);
 
   let page = 0;
@@ -30,7 +31,6 @@ router.get('/:page', async (req, res) => {
       ['id', 'DESC'],
     ],
   });
-  console.log(postsWidhCount);
   res.send({
     content: postsWidhCount.rows,
     totalPages: Math.ceil(postsWidhCount.count / Number.parseInt(size)),
@@ -38,7 +38,7 @@ router.get('/:page', async (req, res) => {
 });
 
 router.post('/', upload.single('file'), async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
 
   try {
     const post = await Post.create({
