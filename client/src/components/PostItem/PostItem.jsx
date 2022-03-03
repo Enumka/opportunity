@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { memo } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -39,4 +39,4 @@ function PostItem({ id, title, body, img }) {
   );
 }
 
-export default PostItem
+export default memo(PostItem)

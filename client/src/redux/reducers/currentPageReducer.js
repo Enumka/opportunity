@@ -1,6 +1,5 @@
 import initState from '../initState'
-import { plus, minus } from '../types/allTypes'
-
+import { plus, minus, SET_COUNT_PAGE } from '../types/allTypes'
 
 const currentPageReducer = (state = initState, action) => {
 
@@ -9,6 +8,11 @@ const currentPageReducer = (state = initState, action) => {
       return action.payload + 1;
     case minus:
       return action.payload - 1;
+
+    case SET_COUNT_PAGE:
+
+      return action.payload
+
     default:
       return state
   }

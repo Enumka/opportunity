@@ -29,7 +29,6 @@ router.get('/:page', async (req, res) => {
       ['id', 'DESC'],
     ],
   });
-  console.log(postsWidhCount.rows);
   res.send({
     content: postsWidhCount.rows,
     totalPages: Math.ceil(postsWidhCount.count / Number.parseInt(size)),
