@@ -1,4 +1,4 @@
-import { CREATE_STARTUP, GET_ALL_POST, GET_ONE_POST } from '../types/allTypes'
+import { CREATE_STARTUP, GET_ALL_POST, GET_ONE_POST, CHANGE_STATUS, DELETE_ONE_POST, GET_POSTS } from '../types/allTypes'
 import axios from 'axios'
 
 export const createStartUp = (startup) => ({
@@ -22,6 +22,10 @@ export const getPosts = (posts) => ({
   payload: posts
 })
 
+export const getPostsFromServer = (num) => async (dispatch) => {
+  const res = await axios(`posts/${num}`)
+  dispatch(getPosts(res.data.content))
+}
 
 export const getOnePost = (startup) => ({
   type: GET_ONE_POST,
@@ -31,12 +35,40 @@ export const getOnePost = (startup) => ({
 export const getOnePostFromServer = (id) => async (dispatch) => {
   const response = await axios(`/posts/detailed/${id}`)
   dispatch(getOnePost(response.data.post))
-  console.log(response.data.post);
   }
-  
-export const getPostsFromServer = (num) => async (dispatch) => {
-  const res = await axios(`posts/${num}`)
-  dispatch(getPosts(res.data.content))
 
-  console.log('res 39==>', res.data.content);
+
+export const getAllPosts = (posts) => ({
+  type: GET_POSTS,
+  payload: posts
+})
+
+export const getPostsFromServerWithoutPages = () => async (dispatch) => {
+  const res = await axios(`/posts/all`)
+  dispatch(getAllPosts(res.data.content))
 }
+
+export const changeStatus = (id) => ({
+  type: CHANGE_STATUS,
+  payload: id
+})
+
+
+export const changeStatusFromServer = (id) => async (dispatch) => {
+  await axios.put(`/posts/${id}`)
+  dispatch(changeStatus(id))
+}
+
+
+export const deleteOnePost = (id) => ({
+  type: DELETE_ONE_POST,
+  payload: id
+
+})
+
+export const deleteOnePostFromServer = (id) => async (dispatch) => {
+  await axios.delete(`/posts/${id}`)
+  dispatch(deleteOnePost(id))
+}
+
+

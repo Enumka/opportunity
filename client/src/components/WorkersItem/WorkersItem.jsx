@@ -9,7 +9,6 @@ import { Link } from "react-router-dom"
 
 
 function WorkersItem({worker}) {
-  // console.log('11',worker);
   return (
     <Card sx={{ maxWidth: 345, marginLeft: '80vh', marginTop: '5vh'}}>
       <CardMedia

@@ -16,11 +16,9 @@ function WorkerProfilePage() {
 
 
   const worker = useSelector(state => state.worker)
-  // console.log(worker);
+  console.log(worker);
   const dispatch = useDispatch()
   const params = useParams()
-  console.log(params)
-  console.log(worker);
 
   useEffect(() => {
     // console.log("effect get");
@@ -48,7 +46,6 @@ function WorkerProfilePage() {
         </Typography>
       </CardContent>
       <CardActions>
-        {/* <Button size="small">Share</Button> */}
         <Button size="small">Связаться</Button>
       </CardActions>
     </Card>

@@ -1,9 +1,15 @@
 import React from 'react'
+import CheckPost from '../CheckPost/CheckPost'
+import CheckUser from '../CheckUser/CheckUser'
 
-function Crm() {
+function CrmPage() {
   return (
-    <div>Crm</div>
+    <>
+    <CheckPost/>
+    <CheckUser/>
+    </>
+    
   )
 }
 
-export default Crm
+export default CrmPage

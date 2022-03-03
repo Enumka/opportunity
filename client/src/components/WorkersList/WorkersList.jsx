@@ -6,18 +6,11 @@ import {getAllWorkersFromServer} from '../../redux/action/workersAc'
 
 function WorkersList() {
   const workers = useSelector(state => state.workers)
-  // console.log('workers',workers);
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(getAllWorkersFromServer(0))
-  }, [])
-
-    // workers.forEach(worker => console.log('12',worker))
+  
   return (
     <div>
-      {workers?.map((worker) => <WorkersItem key={worker.id} worker={worker}/>)}
-      
+      {workers?.filter(el => el.status === true).map((worker) => <WorkersItem key={worker.id} worker={worker}/>)}
+      // added filter, if it doesnt work, remove method filter and just leave map
     </div>
   )
 }

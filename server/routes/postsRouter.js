@@ -12,6 +12,8 @@ router.get('/', async (req, res) => {
   res.json({ category });
 });
 
+
+
 router.get('/:page', async (req, res) => {
   const pageAsNumber = Number.parseInt(req.params.page);
 
@@ -54,20 +56,26 @@ router.post('/', upload.single('file'), async (req, res) => {
   }
 });
 
+router.get('/all', async (req, res) => {
+  const posts = await Post.findAll();
+  res.json({ posts });
+});
+
 router.put('/:id', upload.single('file'), async (req, res) => {
   // console.log(req.body);
 
   try {
     const post = await Post.update({
-      status: false,
-      title: req.body.title,
-      body: req.body.body,
-      categoryId: req.body.categoryId,
-      userId: req.session.userId,
-      img: `/img/${req.file.originalname}`,
+      status: true,
+      // title: req.body.title,
+      // body: req.body.body,
+      // categoryId: req.body.categoryId,
+      // userId: req.session.userId,
+      // img: `img/${req?.file?.originalname}`,
     }, { where: { id: req.params.id } });
     res.json({ post });
   } catch (err) {
+    console.error(err);
     res.sendStatus(500);
   }
 });

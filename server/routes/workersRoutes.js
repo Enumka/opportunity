@@ -28,6 +28,11 @@ router.get('/:page', async (req, res) => {
   });
 });
 
+router.get('/', async (req, res) => {
+  const worker = await User.findAll();
+  res.json({ worker });
+});
+
 router.put('/:id', upload.single('file'), async (req, res) => {
   // console.log(req.body);
 
@@ -37,18 +42,19 @@ router.put('/:id', upload.single('file'), async (req, res) => {
 
   try {
     const worker = await User.update({
-      login,
-      email,
-      firstName,
-      lastName,
-      telephone,
-      body,
+      // login,
+      // email,
+      // firstName,
+      // lastName,
+      // telephone,
+      // body,
       status: true,
-      img: `/img/${req.file.originalname}`,
+      // img: `/img/${req.file.originalname}`,
     }, { where: { id: req.params.id } });
     console.log(worker);
     res.json({ worker });
   } catch (err) {
+   console.error(err)
     res.sendStatus(500);
   }
 });

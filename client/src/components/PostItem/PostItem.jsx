@@ -4,13 +4,15 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions, Grid } from '@mui/material';
+import { Link } from "react-router-dom"
+
 
 function PostItem({ id, title, body, img }) {
-
+// console.log(img);
   return (
     <Grid item xs={12} md={4}>
 
-      <Card sx={{ maxWidth: 345 }}>
+      <Card sx={{ maxWidth: 345, height: 500 }}>
         <CardActionArea>
           <CardMedia
             component="img"
@@ -28,9 +30,9 @@ function PostItem({ id, title, body, img }) {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary">
+        <Link to={`/infoproject/${id}`}><Button size="small" color="primary">
             Подробнее
-          </Button>
+          </Button></Link>
         </CardActions>
       </Card>
     </Grid>
