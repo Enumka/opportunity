@@ -7,7 +7,7 @@ const initState = {
   post: {},
   user: null,
   roles: [],
-  page: []
+  page: 0
 
 }
 
