@@ -1,4 +1,4 @@
-import { CREATE_STARTUP, GET_ALL_POST, GET_CATEGORY, GET_ONE_POST } from '../types/allTypes'
+import { CREATE_STARTUP, GET_ALL_POST, } from '../types/allTypes'
 import initState from '../initState'
 
 const startupReducer = (state = initState, action) => {
@@ -12,6 +12,8 @@ const startupReducer = (state = initState, action) => {
 
     case GET_ALL_POST:
       return action.payload
+
+
 
     default:
       return state

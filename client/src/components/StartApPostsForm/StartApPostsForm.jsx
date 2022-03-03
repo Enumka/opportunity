@@ -39,7 +39,6 @@ function StartApPostsForm() {
   const handleChangeDescription = (e) => {
     setBody(e.target.value)
   }
-
   const handleChangeCategory = (e) => {
     setCategory(e.target.value)
 

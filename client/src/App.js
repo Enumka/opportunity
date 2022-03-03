@@ -22,14 +22,15 @@ function App() {
       <Routes>
         <Route path="/crm" element={<Crm />} />
         <Route path="/infoproject" element={<InfoProject />} />
-        <Route path="/startappage" element={<PostPage />} />
+        <Route path="/startappage/:page" element={<PostPage />} />
+        <Route path="/startappage/" element={<PostPage />} />
         <Route path="/startapposts" element={<StartApPostsPage />} />
         <Route path="/workerprofile/:id" element={<WorkerProfilePage />} />
         <Route path="/workers" element={<WorkersPage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/userprofile" element={<UserProfile />} />
-        <Route path="/" element={<MainPage/>}/>
+        <Route path="/" element={<MainPage />} />
       </Routes>
     </>
 

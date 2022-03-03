@@ -1,4 +1,5 @@
 const initState = {
+  currentPage: 0,
   category: [],
   workers: [],
   worker: {},
@@ -6,7 +7,8 @@ const initState = {
   post: {},
   user: null,
   roles: [],
-  skill: []
+  skill: [],
+  page: 0
 }
 
 export default initState

@@ -41,14 +41,10 @@ function InfoProjectCard() {
 
 
   const startup = useSelector(state => state.startup)
-  console.log(startup);
   const dispatch = useDispatch()
   const params = useParams()
-  // console.log(params);
   useEffect(() => {
-    // console.log("effect get");
     dispatch(getOnePostFromServer(params.id))
-    console.log(params.id);
   }, [])
 
   return (
@@ -77,9 +73,9 @@ function InfoProjectCard() {
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
-        <FavoriteIcon />
-        Связаться c создателем идеи
-      </IconButton>
+          <FavoriteIcon />
+          Связаться c создателем идеи
+        </IconButton>
         {/* <IconButton aria-label="share">
         <ShareIcon />
       </IconButton> */}
