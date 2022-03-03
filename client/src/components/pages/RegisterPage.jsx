@@ -49,12 +49,12 @@ export default function Register() {
     dispatch(getRoles())
   }, [])
 
-  const submitHandler = (e) => {
-    e.preventDefault()
-    dispatch(getUser(inputs))
-    setInputs({ login: '', email: '', password: '', roleId: 3 })
-    navigate('/')
-  }
+const submitHandler = (e) => {
+   e.preventDefault()
+   dispatch(getUser(inputs))
+   setInputs({login:'', email:'', password:'', roleId:3})
+   navigate('/userprofile')
+}
 
 
   return (

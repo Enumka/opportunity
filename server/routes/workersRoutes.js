@@ -29,14 +29,16 @@ router.get('/:page', async (req, res) => {
 });
 
 router.put('/:id', upload.single('file'), async (req, res) => {
+  console.log('ppppppppppppppppppppppp', req.body);
+
   const {
     login, email, firstName, lastName, telephone, body,
   } = req.body;
 
   try {
     const worker = await User.update({
-      login,
-      email,
+      // login,
+      // email,
       firstName,
       lastName,
       telephone,

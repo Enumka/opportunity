@@ -7,8 +7,8 @@ const initState = {
   post: {},
   user: null,
   roles: [],
+  skill: [],
   page: 0
-
 }
 
 export default initState

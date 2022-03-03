@@ -8,12 +8,13 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useDispatch } from 'react-redux';
 import { logout } from '../../redux/action/userAC';
 
 
 export const Header = () => {
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
@@ -26,6 +27,30 @@ export const Header = () => {
     setAnchorElNav(null);
   };
 
+  const clickNav = (e) => {
+    if(e.target.innerText === 'ГЛАВНАЯ') {
+      navigate('/')
+    } else if (e.target.innerText === 'ИДЕИ') {
+      navigate('/startappage')
+    }else if (e.target.innerText === 'ИСПОЛНИТЕЛИ') {
+      navigate('/workers')
+      
+    }if (e.target.innerText === 'ДОБАВИТЬ СТАРТАП') {
+      navigate('/startapposts')
+      
+    }else if (e.target.innerText === 'ПРОФИЛЬ') {
+      navigate('/userprofile')
+    }else if (e.target.innerText === 'РЕГИСТРАЦИЯ') {
+      navigate('/register')
+    }else if (e.target.innerText === 'ВОЙТИ') {
+      navigate('/login')
+    }
+  }
+
+  const clickOut = () => {
+    dispatch(logout())
+    navigate('/login')
+  }
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -80,17 +105,17 @@ export const Header = () => {
             OPPORTYNITY
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            <Link to={`/`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Главная</Button></Link>
-            <Link to={`/startappage`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Идеи</Button></Link>
-            <Link to={`/workers`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Исполнители</Button></Link>
-            <Link to={`/startapposts`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Добавить Стартап</Button></Link>
+          <Button onClick={ clickNav} sx={{ my: 2, color: 'white', display: 'block' }}>Главная</Button>
+          <Button onClick={ clickNav} sx={{ my: 2, color: 'white', display: 'block' }}>Идеи</Button>
+          <Button onClick={ clickNav} sx={{ my: 2, color: 'white', display: 'block' }}>Исполнители</Button>
+          <Button onClick={ clickNav} sx={{ my: 2, color: 'white', display: 'block' }}>Добавить Стартап</Button>
 
           </Box>
-          <Link to={`/userprofile`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Профиль</Button></Link>
-
-          <Link to={`/register`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Регистрация</Button></Link>
-          <Link to={`/login`}><Button sx={{ my: 2, color: 'white', display: 'block' }}>Войти</Button></Link>
-          <Link to={`/`}><Button onClick={ () => dispatch(logout())} sx={{ my: 2, color: 'white', display: 'block' }}>Выйти</Button></Link>
+          <Button onClick={ clickNav} sx={{ my: 2, color: 'white', display: 'block' }}>Профиль</Button>
+          
+          <Button onClick={ clickNav} sx={{ my: 2, color: 'white', display: 'block' }}>Регистрация</Button>
+          <Button onClick={ clickNav} sx={{ my: 2, color: 'white', display: 'block' }}>Войти</Button>
+          <Button  onClick={clickOut} sx={{ my: 2, color: 'white', display: 'block' }}>Выйти</Button>
         </Toolbar>
       </Container>
     </AppBar>

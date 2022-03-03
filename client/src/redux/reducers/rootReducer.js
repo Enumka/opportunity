@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import { roleReducer } from "./roleReducer";
 import { userReducer } from "./userReducer";
+import { skillReducer } from "./skillReducer";
 import workersReducer from "./workersReducer";
 import startupReducer from "./startupReducer";
 import oneStartupReducer from "./oneStartupReducer";
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   posts: startupReducer,
   user: userReducer,
   roles: roleReducer,
+  skill: skillReducer,
   page: pagesReducer,
   currentPage: currentPageReducer,
 })
