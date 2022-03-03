@@ -31,7 +31,7 @@ export const checkUser = () => async (dispatch) => {
 export const signIn = (input, navigate) => async (dispatch) => {
   try {
     const res = await axios.post('/users/signin', input)
-    console.log(res.data);
+    // console.log(res.data);
     dispatch({type: SIGN_IN, payload: res.data.user})
     navigate('/')
   } catch (error) {
@@ -45,3 +45,4 @@ export const logout = () => async (dispatch) => {
   dispatch({type: LOGOUT, payload: null })
   
 }
+

@@ -54,7 +54,7 @@ const submitHandler = (e) => {
    e.preventDefault()
    dispatch(getUser(inputs))
    setInputs({login:'', email:'', password:'', roleId:3})
-   navigate('/')
+   navigate('/userprofile')
 }
 
 

@@ -29,7 +29,7 @@ router.get('/:page', async (req, res) => {
 });
 
 router.put('/:id', upload.single('file'), async (req, res) => {
-  // console.log(req.body);
+  console.log('ppppppppppppppppppppppp', req.body);
 
   const {
     login, email, firstName, lastName, telephone, body,
@@ -37,8 +37,8 @@ router.put('/:id', upload.single('file'), async (req, res) => {
 
   try {
     const worker = await User.update({
-      login,
-      email,
+      // login,
+      // email,
       firstName,
       lastName,
       telephone,

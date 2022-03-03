@@ -8,27 +8,45 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-
-
-
+import socket from '../../socket'
+import { sendMessage, getCurrentId } from '../../redux/action/chat';
 
 function WorkerProfilePage() {
 
 
   const worker = useSelector(state => state.worker)
-  // console.log(worker);
   const dispatch = useDispatch()
   const params = useParams()
-  console.log(params)
-  console.log(worker);
+  const [message, setMessage] = useState('')
+  const [messages, setMessages] = useState([])
 
-  useEffect(() => {
-    // console.log("effect get");
+
+  useEffect(() => {    
+    console.log(socket);
+   socket.onopen = function(e) {
+     console.log('OPEN');
+     dispatch(getCurrentId(socket))
+    socket.onmessage = (data) => {
+      
+        const {type, payload} = JSON.parse(data.data)
+        console.log('-----',payload.message);
+        switch(type) {
+          case 'NEW_MESSAGE':
+            setMessages((prev) => [payload.message, ...prev])
+            break
+        }
+    }
+  };
     dispatch(getOneWorkerFromServer(params.id))
   }, [])
   
-
+  const handleMessage = (e) => {
+    e.preventDefault()
+    dispatch(sendMessage({message, workerId:worker.id, socket}))
+    setMessage('')
+  }
   return (
+    <div className='wrap'>
     <Card sx={{ maxWidth: 445,  marginLeft: 'auto', marginRight: 'auto', marginTop: '15vh'}}>
       <CardMedia
         component="img"
@@ -41,18 +59,28 @@ function WorkerProfilePage() {
           {worker.firstName} {worker.lastName}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {/* {worker.lastName} */}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           {worker.body}
         </Typography>
       </CardContent>
       <CardActions>
-        {/* <Button size="small">Share</Button> */}
         <Button size="small">Связаться</Button>
       </CardActions>
     </Card>
-    
+    <div className="chat">
+      <div className="userList"></div>
+      <div className="chatWrap">
+        <div className="messages">
+          {messages.map(item => <div>{item}</div>)}
+        </div>
+        <form onSubmit={handleMessage}>
+          <input type="text" value={message} onChange={(e)=>setMessage(e.target.value)}/>
+          <button type="submit">Отправить</button>
+        </form>
+      </div>
+    </div>
+    </div>
   )
 }
 

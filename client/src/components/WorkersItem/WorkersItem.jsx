@@ -9,7 +9,6 @@ import { Link } from "react-router-dom"
 
 
 function WorkersItem({worker}) {
-  // console.log('11',worker);
   return (
     <Card sx={{ maxWidth: 345, marginLeft: '80vh', marginTop: '5vh'}}>
       <CardMedia
@@ -23,14 +22,12 @@ function WorkersItem({worker}) {
           {worker.firstName} {worker.lastName}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {/* {worker.lastName} */}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           {worker.body}
         </Typography>
       </CardContent>
       <CardActions>
-        {/* <Button size="small">Share</Button> */}
         <Link to={`/workerprofile/${worker.id}`}><Button size="small">Learn More</Button></Link>
       </CardActions>
     </Card>
