@@ -52,6 +52,7 @@ function PostList({ page }) {
         </Stack>
       </AnimatedPage>
 
+
     </>
   )
 }
