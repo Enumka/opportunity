@@ -16,7 +16,7 @@ import MainPage from "./components/pages/MainPage";
 import { AnimatePresence } from 'framer-motion'
 function App() {
   return (
-    <>
+      <>
       <Header />
       <AnimatePresence exitBeforeEnter>
         <Routes>
@@ -33,8 +33,6 @@ function App() {
           <Route path="/" element={<MainPage />} />
         </Routes>
       </AnimatePresence>
-
-
     </>
   );
 }

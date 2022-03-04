@@ -70,8 +70,8 @@ export const changeStatus = (id) => ({
 })
 
 
-export const changeStatusFromServer = (id) => async (dispatch) => {
-  await axios.put(`/posts/${id}`)
+export const changeStatusFromServer = (id, status) => async (dispatch) => {
+  await axios.put(`/crm/post/${id}`)
   dispatch(changeStatus(id))
 }
 

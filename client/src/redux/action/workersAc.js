@@ -38,7 +38,7 @@ export const changeUserStatus = (id) => ({
 
 
 export const changeStatusForWorkersFromServer = (id) => async (dispatch) => {
-  await axios.put(`/workers/${id}`)
+  await axios.put(`/crm/${id}`)
   dispatch(changeUserStatus(id))
 }
 
@@ -69,5 +69,5 @@ export const putWorkerFromThunk = (value, id) => async (dispatch) => {
     }
   })
   dispatch(putWorkerProfile(response.data.worker))
-  console.log('-------->',response.data.worker);
+  // console.log('-------->',response.data.worker);
 }

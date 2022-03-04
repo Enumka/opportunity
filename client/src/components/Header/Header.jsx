@@ -9,11 +9,13 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import { Link, useNavigate } from "react-router-dom"
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../redux/action/userAC';
-
+import AuthMenuList from '../AuthMenu/AuthMenu'
+import UnAuthMenuList from '../UnAuthMenu/UnAuthMenu'
 
 export const Header = () => {
+  const isAuth = useSelector(state => state.user)
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -27,25 +29,25 @@ export const Header = () => {
     setAnchorElNav(null);
   };
 
-  const clickNav = (e) => {
-    if(e.target.innerText === 'ГЛАВНАЯ') {
-      navigate('/')
-    } else if (e.target.innerText === 'ИДЕИ') {
-      navigate('/startappage')
-    }else if (e.target.innerText === 'ИСПОЛНИТЕЛИ') {
-      navigate('/workers')
+  // const clickNav = (e) => {
+  //   if(e.target.innerText === 'ГЛАВНАЯ') {
+  //     navigate('/')
+  //   } else if (e.target.innerText === 'ИДЕИ') {
+  //     navigate('/startappage')
+  //   }else if (e.target.innerText === 'ИСПОЛНИТЕЛИ') {
+  //     navigate('/workers')
       
-    }if (e.target.innerText === 'ДОБАВИТЬ СТАРТАП') {
-      navigate('/startapposts')
+  //   }if (e.target.innerText === 'ДОБАВИТЬ СТАРТАП') {
+  //     navigate('/startapposts')
       
-    }else if (e.target.innerText === 'ПРОФИЛЬ') {
-      navigate('/userprofile')
-    }else if (e.target.innerText === 'РЕГИСТРАЦИЯ') {
-      navigate('/register')
-    }else if (e.target.innerText === 'ВОЙТИ') {
-      navigate('/login')
-    }
-  }
+  //   }else if (e.target.innerText === 'ПРОФИЛЬ') {
+  //     navigate('/userprofile')
+  //   }else if (e.target.innerText === 'РЕГИСТРАЦИЯ') {
+  //     navigate('/register')
+  //   }else if (e.target.innerText === 'ВОЙТИ') {
+  //     navigate('/login')
+  //   }
+  // }
 
   const clickOut = () => {
     dispatch(logout())
@@ -104,18 +106,23 @@ export const Header = () => {
           >
             OPPORTYNITY
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-          <Button onClick={ clickNav} sx={{ my: 2, color: 'white', display: 'block' }}>Главная</Button>
+          {/* <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}> */}
+          {/* <Button onClick={ clickNav} sx={{ my: 2, color: 'white', display: 'block' }}>Главная</Button>
           <Button onClick={ clickNav} sx={{ my: 2, color: 'white', display: 'block' }}>Идеи</Button>
           <Button onClick={ clickNav} sx={{ my: 2, color: 'white', display: 'block' }}>Исполнители</Button>
           <Button onClick={ clickNav} sx={{ my: 2, color: 'white', display: 'block' }}>Добавить Стартап</Button>
-
           </Box>
           <Button onClick={ clickNav} sx={{ my: 2, color: 'white', display: 'block' }}>Профиль</Button>
           
           <Button onClick={ clickNav} sx={{ my: 2, color: 'white', display: 'block' }}>Регистрация</Button>
           <Button onClick={ clickNav} sx={{ my: 2, color: 'white', display: 'block' }}>Войти</Button>
-          <Button  onClick={clickOut} sx={{ my: 2, color: 'white', display: 'block' }}>Выйти</Button>
+          <Button  onClick={clickOut} sx={{ my: 2, color: 'white', display: 'block' }}>Выйти</Button> */}
+
+          {isAuth 
+          ? <AuthMenuList/>
+          : <UnAuthMenuList/>
+        }
+          
         </Toolbar>
       </Container>
     </AppBar>

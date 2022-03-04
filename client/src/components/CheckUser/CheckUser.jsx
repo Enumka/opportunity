@@ -12,7 +12,6 @@ function CheckUser() {
 
   const workers = useSelector(state => state.workers)
   const dispatch = useDispatch()
-  // console.log(workers);
   
   useEffect(() => {
     dispatch(getAllWorkersFromServerwithoutPages())

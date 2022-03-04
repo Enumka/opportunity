@@ -39,7 +39,6 @@ router.get('/:page', async (req, res) => {
 
 router.post('/', upload.single('file'), async (req, res) => {
   // console.log(req.body);
-
   try {
     const post = await Post.create({
       status: false,

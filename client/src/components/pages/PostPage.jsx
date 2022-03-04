@@ -12,7 +12,7 @@ function PostPage() {
   const { page } = useParams()
 
   useEffect(() => {
-    console.log('.//...//', currentPage);
+    // console.log('.//...//', currentPage);
     dispatch(getPostsFromServer(currentPage))
   }, [currentPage, dispatch])
 

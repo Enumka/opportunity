@@ -6,7 +6,9 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+
 import { getAllWorkersFromServer } from '../../redux/action/workersAc';
+
 
 function MainPage() {
 
@@ -29,7 +31,7 @@ dispatch(getAllWorkersFromServer())
 
   return (
     <>
-    <Container sx={{maxWidth:"sm", mt:"40px", }}>
+    {/* <Container sx={{maxWidth:"sm", mt:"40px", }}>
     <Grid container spacing={2} columns={16}>
     <Grid item xs={8}>
       <Typography gutterBottom variant="h4" sx={{marginLeft: "35%"}}>
@@ -82,7 +84,8 @@ dispatch(getAllWorkersFromServer())
   </Button>
   </Grid>
     </Grid>
-    </Container>
+    </Container> */}
+
     </>
   )
 }
