@@ -1,0 +1,39 @@
+.menu {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.menu a {
+  text-decoration: none;
+  color: white;
+  position: relative;
+  display: block;
+}
+.menu a::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  bottom: 0;
+  width: 100%;
+  transform: scaleX(0);
+  background: rgba(255, 255, 255, 0.2);
+  transition: transform 0.5s ease-in-out;
+  transform-origin: right;
+}
+
+.menu a:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.logout {
+  font-size: 16px;
+  font-family: "Times New Roman";
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  color: white;
+  background: rgba(255, 0, 0, 0.123);
+}

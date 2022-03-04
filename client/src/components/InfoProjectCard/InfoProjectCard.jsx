@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { getOnePostFromServer } from '../../redux/action/postAc'
+import { Link } from "react-router-dom"
+import Button from '@mui/material/Button';
+
 
 
 import { styled } from '@mui/material/styles';
@@ -76,7 +79,9 @@ function InfoProjectCard() {
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
+          <Link to={`/workerprofile/${post.userId}`}>
           Связаться c создателем идеи
+            </Link>
         </IconButton>
         {/* <IconButton aria-label="share">
         <ShareIcon />

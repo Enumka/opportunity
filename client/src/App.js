@@ -8,6 +8,7 @@ import InfoProject from "./components/pages/InfoProjectPage";
 import Login from "./components/pages/LoginPage";
 import Register from "./components/pages/RegisterPage";
 import PostPage from "./components/pages/PostPage";
+import cls from './app.modules.css'
 
 import StartApPostsPage from "./components/pages/StartApPostsPage";
 import UserProfile from "./components/pages/UserProfilePage";
@@ -17,7 +18,7 @@ import MainPage from "./components/pages/MainPage";
 
 function App() {
   return (
-    <>
+    <div className="image">
       <Header />
       <Routes>
         <Route path="/crm" element={<Crm />} />
@@ -33,7 +34,7 @@ function App() {
         <Route path="/userprofile" element={<UserProfile />} />
         <Route path="/" element={<MainPage />} />
       </Routes>
-    </>
+    </div>
 
   );
 }

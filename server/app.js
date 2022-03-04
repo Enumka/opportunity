@@ -17,6 +17,7 @@ const postsRouter = require('./routes/postsRouter');
 const workersRoutes = require('./routes/workersRoutes');
 const rolesRouter = require('./routes/rolesRouter');
 const chatRouter = require('./routes/chatRouter');
+const crmRouter = require('./routes/crmRouter');
 
 const app = express();
 
@@ -50,6 +51,7 @@ app.use('/posts', postsRouter);
 app.use('/workers', workersRoutes);
 app.use('/roles', rolesRouter);
 app.use('/chat', chatRouter);
+app.use('/crm', crmRouter);
 
 // app.listen(PORT, () => {
 //   console.log(`server podnyat my capitan on port ${PORT}`);
