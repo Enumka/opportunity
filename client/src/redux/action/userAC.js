@@ -1,5 +1,4 @@
 import axios from "axios"
-import { Navigate } from "react-router-dom"
 import { LOGOUT, SET_USER, SIGN_IN } from "../types/userTypes"
 
 export const setUser = (value) => {
