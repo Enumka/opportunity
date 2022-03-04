@@ -3,7 +3,8 @@ import { pagecount } from "../../redux/action/postAc";
 import { useDispatch, useSelector } from "react-redux"
 import PostItem from "../PostItem/PostItem"
 import { Link } from "react-router-dom";
-import { memo, useState } from "react";
+import { memo } from "react";
+import AnimatedPage from "../AnimationPage/AnimationPage";
 
 function PostList({ page }) {
   const posts = useSelector(state => state.posts) || [];
@@ -19,9 +20,14 @@ function PostList({ page }) {
   posts.forEach(post =>
     console.log(post.id))
 
+
   return (
+
+
     <>
-    <Paper
+
+      <AnimatedPage>
+      <Paper
           component="form"
           style={{width: '129vh', marginBottom: '5vh'}}
           sx={{
@@ -37,36 +43,38 @@ function PostList({ page }) {
           />
           <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
         </Paper>
-      <Grid container spacing={2}  >
+        
+        <Grid container spacing={2}  >
 
-      {/* {posts.filter(el => el.status === true).map(post => <PostItem key={post.id} post={post} {...post} />)} */}
-        {filterClient.map(post => <PostItem key={post.id} post={post} {...post} />)}
+          {posts.map(post => <PostItem key={post.id} post={post} {...post} />)}
 
 
-      </Grid>
+        </Grid>
 
-      <Stack spacing={4}  >
+        <Stack spacing={4}  >
 
-        <Pagination
-          count={totalPage}
-          page={parseInt(page) || 1}
-          onChange={(_, num) => dispatch(pagecount(num))}
-          size="large"
-          sx={{ marginY: 3, marginX: 'auto' }}
-          renderItem={
+          <Pagination
+            count={totalPage}
+            page={parseInt(page) || 1}
+            onChange={(_, num) => dispatch(pagecount(num))}
+            size="large"
+            sx={{ marginY: 3, marginX: 'auto' }}
+            renderItem={
 
-            (item) => (
-              <PaginationItem
-                component={Link}
-                to={`/startappage/${item.page}`}
-                {...item}
-              />
-              /* ,
-              console.log('item===>', item) */
-            )
-          }
-        />
-      </Stack>
+              (item) => (
+                <PaginationItem
+                  component={Link}
+                  to={`/startappage/${item.page}`}
+                  {...item}
+                />
+                /* ,
+                console.log('item===>', item) */
+              )
+            }
+          />
+        </Stack>
+      </AnimatedPage>
+
 
     </>
   )

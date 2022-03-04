@@ -1,11 +1,16 @@
 import React from 'react'
+import AnimatedPage from '../AnimationPage/AnimationPage'
 import StartApPostsForm from '../StartApPostsForm/StartApPostsForm'
 
 function StartApPostsPage() {
   return (
-    <div>
-      <StartApPostsForm/>
-    </div>
+    <AnimatedPage>
+
+
+      <div>
+        <StartApPostsForm />
+      </div>
+    </AnimatedPage>
   )
 }
 

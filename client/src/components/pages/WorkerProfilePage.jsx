@@ -10,6 +10,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import socket from '../../socket'
 import { sendMessage, getCurrentId } from '../../redux/action/chat';
+import AnimatedPage from '../AnimationPage/AnimationPage'
 
 function WorkerProfilePage() {
 
@@ -21,66 +22,69 @@ function WorkerProfilePage() {
   const [messages, setMessages] = useState([])
 
 
-  useEffect(() => {    
+  useEffect(() => {
     console.log(socket);
-   socket.onopen = function(e) {
-     console.log('OPEN');
-     dispatch(getCurrentId(socket))
-    socket.onmessage = (data) => {
-      
-        const {type, payload} = JSON.parse(data.data)
-        console.log('-----',payload.message);
-        switch(type) {
+    socket.onopen = function (e) {
+      console.log('OPEN');
+      dispatch(getCurrentId(socket))
+      socket.onmessage = (data) => {
+
+        const { type, payload } = JSON.parse(data.data)
+        console.log('-----', payload.message);
+        switch (type) {
           case 'NEW_MESSAGE':
             setMessages((prev) => [payload.message, ...prev])
             break
         }
-    }
-  };
+      }
+    };
     dispatch(getOneWorkerFromServer(params.id))
   }, [])
-  
+
   const handleMessage = (e) => {
     e.preventDefault()
-    dispatch(sendMessage({message, workerId:worker.id, socket}))
+    dispatch(sendMessage({ message, workerId: worker.id, socket }))
     setMessage('')
   }
   return (
-    <div className='wrap'>
-    <Card sx={{ maxWidth: 445,  marginLeft: 'auto', marginRight: 'auto', marginTop: '15vh'}}>
-      <CardMedia
-        component="img"
-        height="340"
-        image={`http://localhost:3001${worker.img}`}
-        alt="green iguana"
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {worker.firstName} {worker.lastName}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {worker.body}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Связаться</Button>
-      </CardActions>
-    </Card>
-    <div className="chat">
-      <div className="userList"></div>
-      <div className="chatWrap">
-        <div className="messages">
-          {messages.map(item => <div>{item}</div>)}
+    <AnimatedPage>
+
+      <div className='wrap'>
+        <Card sx={{ maxWidth: 445, marginLeft: 'auto', marginRight: 'auto', marginTop: '15vh' }}>
+          <CardMedia
+            component="img"
+            height="340"
+            image={`http://localhost:3001${worker.img}`}
+            alt="green iguana"
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              {worker.firstName} {worker.lastName}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {worker.body}
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button size="small">Связаться</Button>
+          </CardActions>
+        </Card>
+        <div className="chat">
+          <div className="userList"></div>
+          <div className="chatWrap">
+            <div className="messages">
+              {messages.map(item => <div>{item}</div>)}
+            </div>
+            <form onSubmit={handleMessage}>
+              <input type="text" value={message} onChange={(e) => setMessage(e.target.value)} />
+              <button type="submit">Отправить</button>
+            </form>
+          </div>
         </div>
-        <form onSubmit={handleMessage}>
-          <input type="text" value={message} onChange={(e)=>setMessage(e.target.value)}/>
-          <button type="submit">Отправить</button>
-        </form>
       </div>
-    </div>
-    </div>
+    </AnimatedPage>
   )
 }
 

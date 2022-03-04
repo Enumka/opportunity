@@ -1,14 +1,32 @@
 import React from 'react'
 import WorkersItem from '../WorkersItem/WorkersItem'
-import {useEffect, useState} from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import {getAllWorkersFromServer} from '../../redux/action/workersAc'
-import { Divider, InputBase, Paper } from '@mui/material'
+import { useEffect } from 'react'
+import { useState } from 'react'
+import axios from 'axios'
+import { Grid } from '@mui/material'
 
 function WorkersList() {
-  const workers = useSelector(state => state.workers)
-  const [input, setInput] = useState('')
-  const dispatch = useDispatch()
+  const [fetching, setFetching] = useState(true)
+  const [workers, setWorkers] = useState([])
+  const [curPag, setCurPag] = useState(1)
+  const [totalPage, setTotalPage] = useState(null)
+
+
+  console.log('1', totalPage, curPag);
+  useEffect(() => {
+    if (fetching) {
+      console.log('fetching');
+      axios.get(`/workers/${curPag}`)
+        .then(responce => {
+          console.log(responce.data);
+          setTotalPage(responce.data.totalPages)
+          setWorkers([...workers, ...responce.data.content])
+          setCurPag(prevState => prevState + 1)
+        })
+        .finally(() => setFetching(false))
+    }
+  }, [fetching])
+
 
   const filterClient = workers.filter((worker) => worker.firstName.toLowerCase()
   .includes(input.toLowerCase()) || worker.lastName.toLowerCase()
@@ -16,12 +34,26 @@ function WorkersList() {
   .includes(input.toLowerCase()));
 
   useEffect(() => {
-    dispatch(getAllWorkersFromServer(0))
+    document.addEventListener('scroll', scrollHadnler)
+
+    return function () {
+      document.removeEventListener('scroll', scrollHadnler)
+    }
   }, [])
 
+
+  const scrollHadnler = (e) => {
+    if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100 && totalPage < curPag) {
+      console.log('scroll');
+      // console.log(e.target.documentElement.scrollHeight, '--'.e.target.documentElement.scrollTop, '++++', window.innerHeight);
+      setFetching(true)
+    }
+  }
+
+
   return (
-    <div>
-      <Paper
+    <>
+    <Paper
           component="form"
           style={{width: '50%', marginLeft: 'auto', marginRight: 'auto', marginTop: '5vh'}}
           sx={{
@@ -37,9 +69,14 @@ function WorkersList() {
           />
           <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
         </Paper>
-      {filterClient?.filter(el => el.status === true).map((worker) => <WorkersItem key={worker.id} worker={worker}/>)}
-      {/* // added filter, if it doesnt work, remove method filter and just leave map */}
-    </div>
+      <Grid container spacing={2}  >
+
+
+        {workers?.map((worker) => <WorkersItem key={worker.id} worker={worker} />)}
+
+      </Grid>
+    </>
+
   )
 }
 
