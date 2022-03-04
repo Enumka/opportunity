@@ -21,7 +21,7 @@ router.get('/:page', async (req, res) => {
     page = pageAsNumber;
   }
 
-  const size = 3;
+  const size = 6;
   const postsWidhCount = await Post.findAndCountAll({
     limit: size,
     offset: page * size,

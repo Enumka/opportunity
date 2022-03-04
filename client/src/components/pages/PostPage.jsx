@@ -1,3 +1,4 @@
+import AnimatedPage from '../AnimationPage/AnimationPage'
 import PostList from '../PostList/PostList'
 import { Container } from '@mui/material';
 import { useParams } from 'react-router-dom';
@@ -16,13 +17,16 @@ function PostPage() {
   }, [currentPage, dispatch])
 
   return (
-    <Container sx={{
-      marginY: 15, marginX: 'auto'
-    }}>
+    <AnimatedPage>
 
-      <PostList page={page} />
+      <Container sx={{
+        marginY: 15, marginX: 'auto'
+      }}>
 
-    </Container >
+        <PostList page={page} />
+
+      </Container >
+    </AnimatedPage>
 
 
   )

@@ -5,13 +5,14 @@ const { User } = require('../db/models');
 const upload = require('../middlewares/middlewares');
 
 router.get('/:page', async (req, res) => {
+  console.log(req.params);
   const pageAsNumber = Number.parseInt(req.params.page);
   let page = 0;
   if (!Number.isNaN(pageAsNumber) && pageAsNumber > 0) {
     page = pageAsNumber;
   }
 
-  const size = 3;
+  const size = 6;
   const workersWithCount = await User.findAndCountAll({
     where: { status: true },
     limit: size,

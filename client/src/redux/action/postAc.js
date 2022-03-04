@@ -1,12 +1,5 @@
-import { CREATE_STARTUP, GET_ALL_POST, GET_ONE_POST, GET_PAGES, plus, minus, count, SET_COUNT_PAGE } from '../types/allTypes'
+import { CREATE_STARTUP, GET_ALL_POST, GET_ONE_POST, GET_PAGES, plus, SET_COUNT_PAGE } from '../types/allTypes'
 import axios from 'axios'
-// const arrCreator = (num) => {
-//   const arr = [];
-//   for (let i = 0; i < num; i += 1) {
-//     arr.push(i)
-//   }
-//   return arr
-// };
 
 
 
@@ -15,10 +8,7 @@ export const pageplus = (value) => ({
   payload: value
 
 })
-// export const pageminus = (value) => ({
-//   type: minus,
-//   payload: value
-// })
+
 
 export const pagecount = (count) => ({
   type: SET_COUNT_PAGE,

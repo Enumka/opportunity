@@ -1,8 +1,13 @@
 import React from 'react'
+import AnimatedPage from '../AnimationPage/AnimationPage'
 
 function Crm() {
   return (
-    <div>Crm</div>
+    <AnimatedPage>
+
+
+      <div>Crm</div>
+    </AnimatedPage>
   )
 }
 

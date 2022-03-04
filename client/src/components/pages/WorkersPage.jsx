@@ -1,15 +1,22 @@
-import React from 'react'
+import { Container } from '@mui/material'
+import AnimatedPage from '../AnimationPage/AnimationPage'
 import WorkersList from '../WorkersList/WorkersList'
-
-
 
 function Workers() {
 
-  return (
 
-    <div>
-      <WorkersList/>
-    </div>
+  return (
+    <AnimatedPage>
+
+      <Container sx={{
+        marginY: 15, marginX: 'auto'
+      }}>
+
+
+        <WorkersList />
+      </Container >
+    </AnimatedPage>
+
 
   )
 }
