@@ -56,7 +56,7 @@ function WorkersList() {
       </Grid>
     </>
 
-
+  )
 }
 
 export default WorkersList
