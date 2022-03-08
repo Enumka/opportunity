@@ -1,5 +1,5 @@
 
-import { CREATE_STARTUP, GET_ALL_POST, GET_ONE_POST, GET_PAGES, plus, minus, count, SET_COUNT_PAGE, CHANGE_STATUS, DELETE_ONE_POST, GET_POSTS } from '../types/allTypes'
+import { CREATE_STARTUP, GET_ALL_POST, GET_ONE_POST, GET_PAGES, plus, SET_COUNT_PAGE, CHANGE_STATUS, DELETE_ONE_POST, GET_POSTS } from '../types/allTypes'
 import axios from 'axios'
 
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -11,16 +11,20 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux';
 import { getRoles } from '../../redux/action/rolesAC';
 import { getUser } from '../../redux/action/userAC';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 import AnimatedPage from '../AnimationPage/AnimationPage';
-
 
 function Copyright(props) {
   return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+    <Typography
+      variant="body2"
+      color="text.secondary"
+      align="center"
+      {...props}
+    >
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
         Your Website
@@ -33,35 +37,34 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-
-
 export default function Register() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const roles = useSelector(state => state.roles)
-  const [inputs, setInputs] = useState({ login: '', email: '', password: '', roleId: 3 })
-
+  const roles = useSelector((state) => state.roles);
+  const [inputs, setInputs] = useState({
+    login: '',
+    email: '',
+    password: '',
+    roleId: 3,
+  });
 
   const handleSubmit = (e) => {
-    setInputs(prev => ({ ...prev, [e.target.name]: e.target.value }))
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   useEffect(() => {
-    dispatch(getRoles())
-  }, [])
+    dispatch(getRoles());
+  }, []);
 
   const submitHandler = (e) => {
-    e.preventDefault()
-    dispatch(getUser(inputs))
-    setInputs({ login: '', email: '', password: '', roleId: 3 })
-    navigate('/userprofile')
-  }
-
+    e.preventDefault();
+    dispatch(getUser(inputs));
+    setInputs({ login: '', email: '', password: '', roleId: 3 });
+    navigate('/userprofile');
+  };
 
   return (
     <AnimatedPage>
-
-
       <ThemeProvider theme={theme}>
         <Container component="main" maxWidth="xs">
           <CssBaseline />
@@ -79,7 +82,12 @@ export default function Register() {
             <Typography component="h1" variant="h5">
               Sign up
             </Typography>
-            <Box component="form" onSubmit={submitHandler} noValidate sx={{ mt: 3 }}>
+            <Box
+              component="form"
+              onSubmit={submitHandler}
+              noValidate
+              sx={{ mt: 3 }}
+            >
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={12}>
                   <TextField
@@ -91,7 +99,6 @@ export default function Register() {
                     autoComplete="family-name"
                     onChange={handleSubmit}
                     value={inputs.login}
-
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -101,11 +108,10 @@ export default function Register() {
                     id="email"
                     label="Email Address"
                     name="email"
+                    type="email"
                     autoComplete="email"
                     onChange={handleSubmit}
-
                     value={inputs.email}
-
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -118,22 +124,25 @@ export default function Register() {
                     id="password"
                     autoComplete="new-password"
                     onChange={handleSubmit}
-
                     value={inputs.password}
                   />
                 </Grid>
                 <Grid item xs={12} sm={12}>
-
                   <FormControl fullWidth>
-                    <InputLabel id="demo-simple-select-label">Роль</InputLabel>
+                    <InputLabel id="demo-simple-select-label">Role</InputLabel>
                     <Select
+                      label="Role"
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"
                       name="roleId"
                       value={inputs.roleId}
                       onChange={handleSubmit}
                     >
-                      {roles.map(el => <MenuItem key={el.id} value={el.id}>{el.name}</MenuItem>)}
+                      {roles.map((el) => (
+                        <MenuItem key={el.id} value={el.id}>
+                          {el.name}
+                        </MenuItem>
+                      ))}
                     </Select>
                   </FormControl>
                 </Grid>
@@ -161,4 +170,3 @@ export default function Register() {
     </AnimatedPage>
   );
 }
-

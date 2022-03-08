@@ -1,8 +1,8 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getCategoryFromServer } from '../../redux/action/categoryAc'
-import { createStartupToServer, } from '../../redux/action/postAc'
+import React from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCategoryFromServer } from '../../redux/action/categoryAc';
+import { createStartupToServer } from '../../redux/action/postAc';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -15,53 +15,48 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import AccessibilityIcon from '@mui/icons-material/Accessibility';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
-
 const theme = createTheme();
 
 function StartApPostsForm() {
-
-  const [title, setTitle] = useState('')
-  const [body, setBody] = useState('')
-  const [categoryId, setCategory] = useState('')
-  const [image, setImage] = useState('')
-  const category = useSelector(state => state.category)
-  const dispatch = useDispatch()
-
+  const [title, setTitle] = useState('');
+  const [body, setBody] = useState('');
+  const [categoryId, setCategory] = useState('');
+  const [image, setImage] = useState('');
+  const category = useSelector((state) => state.category);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getCategoryFromServer())
-  }, [])
+    dispatch(getCategoryFromServer());
+  }, []);
 
   const handleChangeTitle = (e) => {
-    setTitle(e.target.value)
-  }
+    setTitle(e.target.value);
+  };
 
   const handleChangeDescription = (e) => {
-    setBody(e.target.value)
-  }
+    setBody(e.target.value);
+  };
   const handleChangeCategory = (e) => {
-    setCategory(e.target.value)
-
-  }
+    setCategory(e.target.value);
+  };
 
   const handleChangeImage = (e) => {
-    setImage(e.target.files[0])
-  }
+    setImage(e.target.files[0]);
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const formData = new FormData();
     formData.append('file', image);
     formData.append('title', title);
     formData.append('body', body);
     formData.append('categoryId', categoryId);
-    dispatch(createStartupToServer(formData))
-    setTitle('')
-    setBody('')
-    setCategory('')
-    setImage('')
-  }
-
+    dispatch(createStartupToServer(formData));
+    setTitle('');
+    setBody('');
+    setCategory('');
+    setImage('');
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -81,8 +76,12 @@ function StartApPostsForm() {
           <Typography component="h1" variant="h5">
             Создание Стартапа
           </Typography>
-          <Box component="form" onSubmit={handleSubmit}  noValidate sx={{ mt: 1 }}>
-          
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            noValidate
+            sx={{ mt: 1 }}
+          >
             <TextField
               margin="normal"
               fullWidth
@@ -95,9 +94,9 @@ function StartApPostsForm() {
               onChange={(e) => handleChangeTitle(e)}
             />
             <TextField
-            id="outlined-multiline-static"
-            multiline
-            rows={4}
+              id="outlined-multiline-static"
+              multiline
+              rows={4}
               margin="normal"
               fullWidth
               name="body"
@@ -106,30 +105,34 @@ function StartApPostsForm() {
               onChange={(e) => handleChangeDescription(e)}
             />
             <TextField
-            margin="normal"
-            required
-            fullWidth
-             type="file" 
-             name="img"
-            onChange={(e) => handleChangeImage(e)}
-
+              margin="normal"
+              required
+              fullWidth
+              type="file"
+              name="img"
+              onChange={(e) => handleChangeImage(e)}
             />
             <Grid item xs={12} sm={12}>
-            <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">
-              Категория
-            </InputLabel>
-            <Select
-    labelId="demo-simple-select-label"
-    id="demo-simple-select"
-    name="name"
-    value={category.name}
-    onChange={(e) => handleChangeCategory(e)}
-  >
-   {category.map(el =>  <MenuItem key={el.id} value={el.id} >{el.name}</MenuItem> )}
-  </Select>
-</FormControl>
-</Grid>
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">
+                  Категория
+                </InputLabel>
+                <Select 
+                  label="Category"
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  name="name"
+                  value={category.name}
+                  onChange={(e) => handleChangeCategory(e)}
+                >
+                  {category.map((el) => (
+                    <MenuItem key={el.id} value={el.id}>
+                      {el.name}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Grid>
             <Button
               type="submit"
               fullWidth
@@ -139,7 +142,7 @@ function StartApPostsForm() {
               Добавить Идею
             </Button>
           </Box>
-        </Box>      
+        </Box>
       </Container>
     </ThemeProvider>
     // <form className="container-fluid" onSubmit={handleSubmit}>
@@ -176,7 +179,7 @@ function StartApPostsForm() {
     //     <button type="submit">Добавить Идею</button>
     //   </div>
     // </form>
-  )
+  );
 }
 
-export default StartApPostsForm
+export default StartApPostsForm;

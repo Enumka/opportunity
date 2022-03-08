@@ -5,7 +5,7 @@ import cls from './style.module.css'
 function UnAuthMenuList() {
   return (
     <div className={cls.menu}>
-    {UnAuthMenu.map(item => <Link to={item.link}> {item.title}</Link>)}
+    {UnAuthMenu.map(item => <Link  key={item.link} to={item.link}> {item.title}</Link>)}
     </div>
   )
 }

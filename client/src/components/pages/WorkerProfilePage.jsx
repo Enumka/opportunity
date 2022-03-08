@@ -35,6 +35,7 @@ function WorkerProfilePage() {
           case 'NEW_MESSAGE':
             setMessages((prev) => [payload.message, ...prev])
             break
+          
         }
       }
     };
